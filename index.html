@@ -898,21 +898,14 @@
             });
         });
 
-        // STEP NUMBER STICKY AT 50% + PARALLAX
+        // STEP NUMBER STICKY AT 50%
         window.addEventListener('scroll', () => {
-            const scrolled = window.pageYOffset;
-
             document.querySelectorAll('.step-section').forEach(section => {
                 const numberBlock = section.querySelector('.step-number-block');
-                const numberEl = section.querySelector('.step-number');
                 const rect = section.getBoundingClientRect();
                 const sectionHeight = section.offsetHeight;
                 const scrolledPast = -rect.top;
                 const halfway = sectionHeight * 0.5;
-
-                // Parallax effect
-                const rate = scrolled * -0.3;
-                numberEl.style.transform = `translateY(${rate}px)`;
 
                 // Sticky behavior after 50%
                 if (scrolledPast > halfway && rect.bottom > 0) {
