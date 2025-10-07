@@ -171,7 +171,7 @@
 
         /* STEP SECTIONS - THE CORE */
         .step-section {
-            padding: 25rem 2rem 30rem 2rem;
+            padding: 6rem 2rem;
             position: relative;
             border-bottom: 4px solid var(--black);
         }
@@ -898,15 +898,23 @@
             });
         });
 
-        // STEP NUMBER STICKY AT 50%
+        // STEP NUMBER STICKY AT 50% + PARALLAX
         window.addEventListener('scroll', () => {
+            const scrolled = window.pageYOffset;
+
             document.querySelectorAll('.step-section').forEach(section => {
                 const numberBlock = section.querySelector('.step-number-block');
+                const numberEl = section.querySelector('.step-number');
                 const rect = section.getBoundingClientRect();
                 const sectionHeight = section.offsetHeight;
                 const scrolledPast = -rect.top;
                 const halfway = sectionHeight * 0.5;
 
+                // Parallax effect
+                const rate = scrolled * -0.3;
+                numberEl.style.transform = `translateY(${rate}px)`;
+
+                // Sticky behavior after 50%
                 if (scrolledPast > halfway && rect.bottom > 0) {
                     numberBlock.style.position = 'sticky';
                     numberBlock.style.top = '2rem';
