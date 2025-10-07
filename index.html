@@ -190,7 +190,8 @@
         }
 
         .step-number-block {
-            position: relative;
+            position: sticky;
+            top: 2rem;
         }
 
         .step-number {
@@ -898,25 +899,6 @@
             });
         });
 
-        // STEP NUMBER STICKY AT 50%
-        window.addEventListener('scroll', () => {
-            document.querySelectorAll('.step-section').forEach(section => {
-                const numberBlock = section.querySelector('.step-number-block');
-                const rect = section.getBoundingClientRect();
-                const sectionHeight = section.offsetHeight;
-                const scrolledPast = -rect.top;
-                const halfway = sectionHeight * 0.5;
-
-                // Sticky behavior after 50%
-                if (scrolledPast > halfway && rect.bottom > 0) {
-                    numberBlock.style.position = 'sticky';
-                    numberBlock.style.top = '2rem';
-                } else {
-                    numberBlock.style.position = 'relative';
-                    numberBlock.style.top = 'auto';
-                }
-            });
-        });
     </script>
 </body>
 </html>
