@@ -898,6 +898,39 @@
             });
         });
 
+        // MEGA-TITLE HOVER EFFECTS
+        document.querySelectorAll('.mega-title').forEach(title => {
+            title.addEventListener('mouseenter', () => {
+                title.style.transform = 'scale(1.02) rotate(-1deg)';
+                title.style.transition = 'all 0.3s ease';
+            });
+
+            title.addEventListener('mouseleave', () => {
+                title.style.transform = 'scale(1) rotate(0deg)';
+            });
+        });
+
+        // GEOMETRIC ELEMENTS PARALLAX (mouse tracking)
+        window.addEventListener('mousemove', (e) => {
+            const moveX = (e.clientX - window.innerWidth / 2) * 0.01;
+            const moveY = (e.clientY - window.innerHeight / 2) * 0.01;
+
+            document.querySelectorAll('.geometric-element').forEach((el, index) => {
+                const speed = (index + 1) * 0.5;
+                el.style.transform = `rotate(45deg) translate(${moveX * speed}px, ${moveY * speed}px)`;
+            });
+        });
+
+        // RANDOM ROTATION ON EXAMPLE BOXES
+        setInterval(() => {
+            document.querySelectorAll('.example-box').forEach(box => {
+                if (!box.matches(':hover')) {
+                    const randomRotation = (Math.random() - 0.5) * 4; // -2 to 2 degrees
+                    box.style.transform = `rotate(${randomRotation}deg)`;
+                }
+            });
+        }, 5000);
+
     </script>
 </body>
 </html>
