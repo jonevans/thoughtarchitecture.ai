@@ -169,6 +169,15 @@
             opacity: 1;
         }
 
+        .nav-link.active {
+            color: var(--red-accent);
+            transform: translateX(10px);
+        }
+
+        .nav-link.active::before {
+            opacity: 1;
+        }
+
         /* STEP SECTIONS - THE CORE */
         .step-section {
             padding: 6rem 2rem;
@@ -1110,6 +1119,34 @@
                 }
             });
         }, 5000);
+
+        // ACTIVE NAV ON SCROLL
+        const sections = document.querySelectorAll('section[id]');
+        const navLinks = document.querySelectorAll('.nav-link');
+
+        const navObserverOptions = {
+            threshold: 0.2,
+            rootMargin: '-100px 0px -66% 0px'
+        };
+
+        const navObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const id = entry.target.getAttribute('id');
+                    // Remove active from all links
+                    navLinks.forEach(link => link.classList.remove('active'));
+                    // Add active to matching link
+                    const activeLink = document.querySelector(`.nav-link[href="#${id}"]`);
+                    if (activeLink) {
+                        activeLink.classList.add('active');
+                    }
+                }
+            });
+        }, navObserverOptions);
+
+        sections.forEach(section => {
+            navObserver.observe(section);
+        });
 
     </script>
 </body>
