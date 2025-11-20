@@ -1,0 +1,1065 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Demo - THOUGHT ARCHITECTURE™</title>
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <style>
+        :root {
+            --pink: #DCA1A1;
+            --pink-bright: #FF6B9D;
+            --cream: #F7F3E9;
+            --grey: #555555;
+            --black: #1A1A1A;
+            --white: #FFFFFF;
+            --red-accent: #FF0066;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Inter', 'Helvetica Neue', Arial, sans-serif;
+            background: var(--cream);
+            color: var(--black);
+            overflow-x: hidden;
+            min-height: 100vh;
+        }
+
+        /* NAVIGATION */
+        .nav-container {
+            position: fixed;
+            top: 2rem;
+            right: 2rem;
+            z-index: 1000;
+            background: var(--white);
+            padding: 1rem;
+            border: 3px solid var(--black);
+            transform: rotate(2deg);
+            box-shadow: 5px 5px 0 var(--pink);
+        }
+
+        .nav-link {
+            display: block;
+            text-decoration: none;
+            color: var(--black);
+            font-weight: 600;
+            font-size: 1.1rem;
+            margin: 0.5rem 0;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            transition: all 0.2s ease;
+            position: relative;
+        }
+
+        .nav-link:hover {
+            color: var(--red-accent);
+            transform: translateX(10px);
+        }
+
+        .nav-link::before {
+            content: '→';
+            position: absolute;
+            left: -20px;
+            opacity: 0;
+            transition: opacity 0.2s ease;
+        }
+
+        .nav-link:hover::before {
+            opacity: 1;
+        }
+
+        /* PAGE CONTAINER */
+        .demo-page {
+            min-height: 100vh;
+            padding: 4rem 2rem;
+            position: relative;
+        }
+
+        .demo-container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        /* HEADER */
+        .demo-header {
+            text-align: center;
+            margin-bottom: 4rem;
+            position: relative;
+        }
+
+        .mega-title {
+            font-size: clamp(3rem, 10vw, 8rem);
+            font-weight: 800;
+            line-height: 0.9;
+            text-transform: uppercase;
+            letter-spacing: -0.05em;
+            color: var(--black);
+        }
+
+        .mega-title.pink {
+            color: var(--pink-bright);
+        }
+
+        .mega-title.red {
+            color: var(--red-accent);
+        }
+
+        .demo-subtitle {
+            font-size: clamp(1.2rem, 3vw, 2rem);
+            font-weight: 400;
+            margin-top: 1rem;
+            color: var(--grey);
+        }
+
+        .demo-scenario {
+            font-size: 1.3rem;
+            margin-top: 2rem;
+            padding: 1.5rem 2rem;
+            background: var(--white);
+            border: 3px solid var(--black);
+            display: inline-block;
+            transform: rotate(-1deg);
+            box-shadow: 5px 5px 0 var(--pink);
+        }
+
+        /* PATH SELECTION GRID */
+        .path-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 3rem;
+            margin-top: 3rem;
+        }
+
+        .path-card {
+            background: var(--white);
+            border: 4px solid var(--black);
+            padding: 0;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            transform: rotate(0deg);
+        }
+
+        .path-card:hover {
+            transform: translateY(-10px) rotate(-1deg);
+            box-shadow: 10px 10px 0 var(--pink);
+        }
+
+        .path-card.transactional:hover {
+            box-shadow: 10px 10px 0 var(--grey);
+        }
+
+        .path-header {
+            padding: 3rem 2rem;
+            color: var(--white);
+            border-bottom: 4px solid var(--black);
+        }
+
+        .path-card.transactional .path-header {
+            background: linear-gradient(135deg, #888888, #666666);
+        }
+
+        .path-card.thoughtarch .path-header {
+            background: linear-gradient(135deg, var(--red-accent), var(--pink-bright));
+        }
+
+        .path-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            display: block;
+        }
+
+        .path-title {
+            font-size: 2.5rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 1rem;
+        }
+
+        .path-subtitle {
+            font-size: 1.2rem;
+            opacity: 0.95;
+        }
+
+        .path-body {
+            padding: 2rem;
+        }
+
+        .path-features {
+            margin-bottom: 2rem;
+        }
+
+        .path-features p {
+            font-size: 1.1rem;
+            margin: 0.8rem 0;
+            font-weight: 600;
+            color: var(--black);
+        }
+
+        .path-cta {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--red-accent);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        /* STEP VIEW */
+        .step-view {
+            display: none;
+        }
+
+        .step-view.active {
+            display: block;
+        }
+
+        .step-header {
+            background: var(--white);
+            border: 3px solid var(--black);
+            padding: 2rem;
+            margin-bottom: 2rem;
+            transform: rotate(-0.5deg);
+            box-shadow: 6px 6px 0 var(--pink);
+        }
+
+        .step-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+
+        .back-button {
+            background: none;
+            border: 2px solid var(--black);
+            padding: 0.8rem 1.5rem;
+            cursor: pointer;
+            font-weight: 700;
+            font-size: 1rem;
+            text-transform: uppercase;
+            transition: all 0.2s ease;
+        }
+
+        .back-button:hover {
+            background: var(--black);
+            color: var(--white);
+        }
+
+        .step-controls {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .btn {
+            padding: 1rem 2rem;
+            border: 3px solid var(--black);
+            background: var(--white);
+            cursor: pointer;
+            font-weight: 700;
+            font-size: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            transition: all 0.3s ease;
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 4px 4px 0 var(--black);
+        }
+
+        .btn-primary {
+            background: var(--red-accent);
+            color: var(--white);
+            border-color: var(--black);
+        }
+
+        .btn-primary:hover {
+            background: #CC0052;
+        }
+
+        .btn-grey {
+            background: var(--grey);
+            color: var(--white);
+        }
+
+        /* NEXT STEP BUTTON */
+        .next-step-button {
+            position: relative;
+            margin: 3rem 0 2rem auto;
+            width: fit-content;
+            background: var(--white);
+            padding: 1.2rem 2rem;
+            border: 3px solid var(--black);
+            transform: rotate(-2deg);
+            box-shadow: 5px 5px 0 var(--pink);
+            cursor: pointer;
+            font-weight: 700;
+            font-size: 1.1rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            transition: all 0.3s ease;
+        }
+
+        .next-step-button:hover {
+            transform: rotate(-2deg) translateY(-3px);
+            box-shadow: 7px 7px 0 var(--pink);
+        }
+
+        .next-step-button.primary {
+            background: var(--red-accent);
+            color: var(--white);
+        }
+
+        .next-step-button.primary:hover {
+            box-shadow: 7px 7px 0 var(--pink-bright);
+        }
+
+        .next-step-button.grey {
+            background: var(--grey);
+            color: var(--white);
+        }
+
+        .step-title-section h1 {
+            font-size: 3rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 0.5rem;
+        }
+
+        .step-subtitle {
+            font-size: 1.2rem;
+            color: var(--grey);
+        }
+
+        /* STEP CARD */
+        .step-card {
+            background: var(--white);
+            border: 4px solid var(--black);
+            margin-bottom: 2rem;
+            overflow: hidden;
+        }
+
+        .step-card-header {
+            padding: 2rem;
+            background: var(--cream);
+            border-bottom: 3px solid var(--black);
+        }
+
+        .step-card-header.gradient {
+            background: linear-gradient(135deg, var(--red-accent), var(--pink-bright));
+            color: var(--white);
+        }
+
+        .step-phase {
+            font-size: 2rem;
+            font-weight: 900;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-bottom: 0.5rem;
+        }
+
+        .step-label {
+            font-size: 1.5rem;
+            font-weight: 600;
+        }
+
+        .step-number {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .step-time {
+            font-family: 'Courier New', monospace;
+            font-size: 1rem;
+            color: var(--grey);
+        }
+
+        .step-content {
+            padding: 2rem;
+        }
+
+        /* MESSAGES */
+        .message {
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            border-left: 6px solid var(--black);
+            background: var(--cream);
+        }
+
+        .message-label {
+            font-size: 0.8rem;
+            font-weight: 800;
+            letter-spacing: 0.1em;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+        }
+
+        .message-text {
+            font-size: 1.1rem;
+            line-height: 1.7;
+            white-space: pre-line;
+        }
+
+        .message-large {
+            font-size: 1.4rem;
+            font-weight: 600;
+        }
+
+        .message.user {
+            background: rgba(220, 161, 161, 0.2);
+            border-left-color: var(--pink-bright);
+        }
+
+        .message.user .message-label {
+            color: var(--pink-bright);
+        }
+
+        .message.ai-thinking {
+            background: #f5f5f5;
+            border-left-color: var(--grey);
+            font-style: italic;
+        }
+
+        .message.ai-output {
+            background: #f9f9f9;
+            border-left-color: var(--grey);
+            font-family: 'Courier New', monospace;
+        }
+
+        .message.problem {
+            background: rgba(255, 0, 102, 0.1);
+            border-left-color: var(--red-accent);
+        }
+
+        .message.problem .message-label,
+        .message.problem .message-text {
+            color: var(--red-accent);
+            font-weight: 700;
+        }
+
+        .message.happening {
+            background: rgba(220, 161, 161, 0.2);
+            border-left-color: var(--pink-bright);
+        }
+
+        .message.ai-role {
+            background: rgba(220, 161, 161, 0.15);
+            border-left-color: var(--pink);
+        }
+
+        .message.human-role {
+            background: rgba(255, 0, 102, 0.1);
+            border-left-color: var(--red-accent);
+        }
+
+        .message.success {
+            background: rgba(16, 185, 129, 0.1);
+            border-left-color: #10b981;
+        }
+
+        .message.success .message-label {
+            color: #10b981;
+        }
+
+        .message.memory {
+            background: rgba(168, 85, 247, 0.1);
+            border-left-color: #a855f7;
+        }
+
+        .message.memory .message-label {
+            color: #a855f7;
+        }
+
+        .message.output {
+            background: linear-gradient(135deg, rgba(255, 0, 102, 0.1), rgba(220, 161, 161, 0.1));
+            border: 3px solid var(--red-accent);
+            border-left-width: 6px;
+        }
+
+        .message.output .message-text {
+            font-size: 1.3rem;
+            font-weight: 700;
+        }
+
+        /* CONTEXT SECTION */
+        .context-section {
+            margin: 2rem 0;
+        }
+
+        .context-title {
+            font-size: 1rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-bottom: 1rem;
+            color: var(--grey);
+        }
+
+        .context-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1rem;
+        }
+
+        .context-card {
+            background: rgba(220, 161, 161, 0.1);
+            border: 3px solid var(--pink);
+            padding: 1.5rem;
+            display: flex;
+            gap: 1rem;
+            align-items: flex-start;
+        }
+
+        .context-icon {
+            font-size: 2rem;
+            flex-shrink: 0;
+        }
+
+        .context-logo {
+            width: 40px;
+            height: 40px;
+            object-fit: contain;
+            flex-shrink: 0;
+        }
+
+        .context-label {
+            font-weight: 700;
+            font-size: 1rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .context-detail {
+            font-size: 0.9rem;
+            color: var(--grey);
+            line-height: 1.5;
+        }
+
+        /* RESULT CARD */
+        .result-card {
+            background: var(--white);
+            border: 4px solid var(--black);
+            padding: 3rem;
+            margin-top: 2rem;
+            transform: rotate(-0.5deg);
+            box-shadow: 8px 8px 0 var(--pink);
+        }
+
+        .result-title {
+            font-size: 3rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 1.5rem;
+            color: var(--red-accent);
+        }
+
+        .result-text {
+            font-size: 1.3rem;
+            line-height: 1.7;
+            margin-bottom: 1.5rem;
+        }
+
+        .result-conclusion {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--red-accent);
+            margin-bottom: 2rem;
+            padding: 1rem 0;
+            border-top: 3px solid var(--black);
+            border-bottom: 3px solid var(--black);
+        }
+
+        .result-quote {
+            background: var(--cream);
+            padding: 2rem;
+            border-left: 6px solid var(--red-accent);
+            font-size: 1.5rem;
+            font-style: italic;
+            font-weight: 600;
+            text-align: center;
+            margin-top: 2rem;
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 1024px) {
+            .path-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .context-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .nav-container {
+                position: relative;
+                top: 0;
+                right: 0;
+                margin-bottom: 2rem;
+                transform: rotate(0deg);
+            }
+
+            .mega-title {
+                font-size: 3rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .demo-page {
+                padding: 2rem 1rem;
+            }
+
+            .step-nav {
+                flex-direction: column;
+                gap: 1rem;
+                align-items: stretch;
+            }
+
+            .step-controls {
+                flex-direction: column;
+            }
+
+            .path-header {
+                padding: 2rem 1.5rem;
+            }
+
+            .path-title {
+                font-size: 2rem;
+            }
+        }
+
+        /* ANIMATIONS */
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .animate-in {
+            animation: slideIn 0.6s ease-out;
+        }
+    </style>
+</head>
+<body>
+    <!-- NAVIGATION -->
+    <nav class="nav-container">
+        <a href="index.html" class="nav-link">← MAIN SITE</a>
+    </nav>
+
+    <!-- MAIN CONTAINER -->
+    <div class="demo-page">
+        <div class="demo-container">
+            <!-- PATH SELECTION VIEW -->
+            <div id="selection-view" class="selection-view">
+                <div class="demo-header">
+                    <h1 class="mega-title">THE TWO</h1>
+                    <h1 class="mega-title pink">PATHS</h1>
+                    <p class="demo-subtitle">Same challenge. Different approaches.</p>
+                    <div class="demo-scenario">
+                        📋 Scenario: Create a customer success strategy for a manufacturing company
+                    </div>
+                </div>
+
+                <div class="path-grid">
+                    <!-- TRANSACTIONAL PATH -->
+                    <div class="path-card transactional" onclick="selectPath('transactional')">
+                        <div class="path-header">
+                            <span class="path-icon">⚡</span>
+                            <h2 class="path-title">Transactional AI</h2>
+                            <p class="path-subtitle">One-off requests. Starting from zero each time.</p>
+                        </div>
+                        <div class="path-body">
+                            <div class="path-features">
+                                <p>✗ Generic outputs</p>
+                                <p>✗ No context retention</p>
+                                <p>✗ Manual rework required</p>
+                                <p>✗ Starts over every time</p>
+                            </div>
+                            <div class="path-cta">See why this doesn't work →</div>
+                        </div>
+                    </div>
+
+                    <!-- THOUGHT ARCHITECTURE PATH -->
+                    <div class="path-card thoughtarch" onclick="selectPath('thoughtarch')">
+                        <div class="path-header">
+                            <span class="path-icon">👥</span>
+                            <h2 class="path-title">Thought Architecture™</h2>
+                            <p class="path-subtitle">Human as Thought Leader. AI as Thought Partner.</p>
+                        </div>
+                        <div class="path-body">
+                            <div class="path-features">
+                                <p>✓ Your specific context</p>
+                                <p>✓ Your business data</p>
+                                <p>✓ Deployment-ready outputs</p>
+                                <p>✓ Compounds over time</p>
+                            </div>
+                            <div class="path-cta">See how this transforms work →</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- TRANSACTIONAL STEP VIEW -->
+            <div id="transactional-view" class="step-view">
+                <!-- Dynamically populated by JavaScript -->
+            </div>
+
+            <!-- THOUGHT ARCHITECTURE STEP VIEW -->
+            <div id="thoughtarch-view" class="step-view">
+                <!-- Dynamically populated by JavaScript -->
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // STATE MANAGEMENT
+        const state = {
+            currentPath: null,
+            currentStep: 0
+        };
+
+        // DATA
+        const transactionalSteps = [
+            {
+                label: "You ask AI for help",
+                userPrompt: "Create a customer success strategy for my manufacturing company",
+                aiThinking: "Accessing general knowledge base...",
+                aiOutput: "Here's a generic customer success strategy:\n\n1. Onboard new customers effectively\n2. Track key metrics and KPIs\n3. Send regular satisfaction surveys\n4. Provide excellent support\n5. Build long-term relationships",
+                problem: "This is generic advice. It doesn't know anything about YOUR company, YOUR customers, or YOUR industry constraints."
+            },
+            {
+                label: "You realize it's too generic",
+                userPrompt: "No, I need something specific to manufacturing",
+                aiThinking: "Searching general manufacturing knowledge...",
+                aiOutput: "Here's a manufacturing-focused approach:\n\n1. Focus on equipment uptime\n2. Track production metrics\n3. Ensure quality standards\n4. Maintain supply chain reliability\n5. Provide technical documentation",
+                problem: "Still generic. The AI has no memory of your previous question. It's starting from zero again."
+            },
+            {
+                label: "You try to add more context",
+                userPrompt: "We're a $50M precision parts manufacturer with 200 customers, average order value $25K, dealing with quality consistency issues",
+                aiThinking: "Processing new information...",
+                aiOutput: "Based on your description:\n\n1. Implement quality control checkpoints\n2. Develop customer communication protocols\n3. Create escalation procedures\n4. Track defect rates\n5. Build feedback loops",
+                problem: "Better, but you had to manually provide all context. And if you start a new conversation tomorrow, you'll have to do it all over again."
+            },
+            {
+                label: "You give up and do it yourself",
+                userPrompt: "",
+                aiThinking: "",
+                aiOutput: "You spend 3 hours manually crafting the strategy using your internal documents, customer data, and industry knowledge.",
+                problem: "The AI became more work than it was worth. You're back to doing everything manually."
+            }
+        ];
+
+        const thoughtArchSteps = [
+            {
+                phase: "01 — Intention",
+                label: "Design the Partnership",
+                detail: "You define what AI should handle vs. what requires your expertise",
+                contextAdded: [],
+                aiRole: "AI will: Analyze customer data patterns, identify trends, draft frameworks",
+                humanRole: "You will: Define success criteria, validate strategic fit, add creative positioning",
+                output: "Partnership roles are clear. AI handles data processing. You handle strategic judgment."
+            },
+            {
+                phase: "02 — Context",
+                label: "Structure the Information",
+                detail: "AI receives your specific business context, not just generic knowledge",
+                contextAdded: [
+                    { icon: "🏢", label: "Company Profile", detail: "$50M precision parts manufacturer, 200 customers" },
+                    { icon: "📄", label: "Recent Documents", detail: "Q3 customer feedback report, quality audit findings" },
+                    { icon: "💾", label: "Customer Data", detail: "Order history, defect rates, support tickets" },
+                    { icon: "📈", label: "Current Challenges", detail: "Quality consistency issues, 15% repeat defect rate" }
+                ],
+                aiRole: "AI now understands: Your company size, customer base, current challenges, recent performance data",
+                humanRole: "You provided: Business constraints, goals, available resources, strategic priorities",
+                output: "AI has built a complete picture of YOUR situation. Not generic knowledge—your specific context."
+            },
+            {
+                phase: "03 — Synthesize",
+                label: "Combine AI Capability with Human Judgment",
+                detail: "AI processes your data and generates insights. You validate and refine.",
+                contextAdded: [],
+                aiAnalysis: "• Identified pattern: 80% of defects occur in 3 specific product lines\n• Found correlation: Customers with proactive communication have 45% lower churn\n• Generated framework: 4-tier customer success model based on order value and complexity",
+                humanRefinement: "You adjusted:\n• Prioritized the 3 high-defect product lines for immediate action\n• Added quarterly business reviews for top 20% of customers\n• Incorporated your team's capacity constraints",
+                output: "The strategy combines AI's pattern recognition with your strategic insight and operational reality."
+            },
+            {
+                phase: "04 — Deliver",
+                label: "Create Tangible Value",
+                detail: "You get a deployment-ready strategy that builds institutional memory",
+                finalOutput: "✓ Customer Success Strategy (customized for your business)\n✓ Implementation timeline with your team's capacity\n✓ Success metrics tied to your actual data\n✓ Action items for the 3 high-defect product lines\n✓ Quarterly business review template for top customers",
+                memory: "Next time you work with AI:\n• It remembers this context\n• Builds on this foundation\n• Gets better with each interaction\n• Compounds your institutional knowledge",
+                output: "95% deployment-ready. Your team can start executing Monday. And the context is saved for next time."
+            },
+            {
+                phase: "05 — Technology",
+                label: "How Frontier AI Models Enable This",
+                detail: "Leading AI platforms have built features specifically for context awareness and institutional memory",
+                contextAdded: [
+                    { logo: "ThoughtArchitectureDemo/public/assets/Claude_logo.png", label: "Claude Projects", detail: "200K context window, custom instructions, project knowledge base" },
+                    { logo: "ThoughtArchitectureDemo/public/assets/openAI_logo.png", label: "ChatGPT Projects", detail: "Project-only memory, file uploads, isolated context per workspace" },
+                    { logo: "ThoughtArchitectureDemo/public/assets/Microsoft_Copilot_Logo.png", label: "Copilot Notebooks", detail: "M365 integration, real-time updates, SharePoint-backed storage" },
+                    { logo: "ThoughtArchitectureDemo/public/assets/Google_logo.svg.webp", label: "NotebookLM", detail: "50 sources per notebook, citation-backed responses, no hallucinations" }
+                ],
+                aiRole: "These platforms provide:\n• Persistent context across conversations\n• File and document integration\n• Team collaboration on shared knowledge\n• Memory isolation between projects\n• Automatic context expansion (RAG)",
+                humanRole: "You choose the right tool:\n• Claude for long-form analysis and reasoning\n• ChatGPT for conversational workflows\n• Copilot for Microsoft 365 integration\n• NotebookLM for research and citation needs",
+                output: "This isn't theoretical. Every major AI platform now supports Thought Architecture workflows."
+            }
+        ];
+
+        // NAVIGATION FUNCTIONS
+        function selectPath(path) {
+            state.currentPath = path;
+            state.currentStep = 0;
+            document.getElementById('selection-view').style.display = 'none';
+            if (path === 'transactional') {
+                renderTransactionalStep();
+                document.getElementById('transactional-view').classList.add('active');
+            } else {
+                renderThoughtArchStep();
+                document.getElementById('thoughtarch-view').classList.add('active');
+            }
+        }
+
+        function backToSelection() {
+            state.currentPath = null;
+            state.currentStep = 0;
+            document.getElementById('transactional-view').classList.remove('active');
+            document.getElementById('thoughtarch-view').classList.remove('active');
+            document.getElementById('selection-view').style.display = 'block';
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function nextStep() {
+            const maxSteps = state.currentPath === 'transactional' ? 3 : 4;
+            if (state.currentStep < maxSteps) {
+                state.currentStep++;
+                if (state.currentPath === 'transactional') {
+                    renderTransactionalStep();
+                } else {
+                    renderThoughtArchStep();
+                }
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            }
+        }
+
+        function resetSteps() {
+            state.currentStep = 0;
+            if (state.currentPath === 'transactional') {
+                renderTransactionalStep();
+            } else {
+                renderThoughtArchStep();
+            }
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // RENDER TRANSACTIONAL VIEW
+        function renderTransactionalStep() {
+            const step = transactionalSteps[state.currentStep];
+            const container = document.getElementById('transactional-view');
+
+            let html = `
+                <div class="step-header animate-in">
+                    <div class="step-nav">
+                        <button class="back-button" onclick="backToSelection()">← Back to comparison</button>
+                    </div>
+                    <div class="step-title-section">
+                        <h1>⚡ Transactional AI</h1>
+                        <p class="step-subtitle">Watch what happens when you use AI as a simple tool</p>
+                    </div>
+                </div>
+
+                <div class="step-card animate-in">
+                    <div class="step-card-header">
+                        <div class="step-number">Step ${state.currentStep + 1}: ${step.label}</div>
+                        <div class="step-time">${state.currentStep * 3} minutes elapsed</div>
+                    </div>
+                    <div class="step-content">
+                        ${step.userPrompt ? `
+                            <div class="message user">
+                                <div class="message-label">YOU</div>
+                                <div class="message-text">${step.userPrompt}</div>
+                            </div>
+                        ` : ''}
+
+                        ${step.aiThinking ? `
+                            <div class="message ai-thinking">
+                                <div class="message-label">⚡ AI THINKING</div>
+                                <div class="message-text">${step.aiThinking}</div>
+                            </div>
+                        ` : ''}
+
+                        <div class="message ai-output">
+                            <div class="message-label">AI OUTPUT</div>
+                            <div class="message-text">${step.aiOutput}</div>
+                        </div>
+
+                        <div class="message problem">
+                            <div class="message-label">⚠️ THE PROBLEM</div>
+                            <div class="message-text">${step.problem}</div>
+                        </div>
+                    </div>
+                </div>
+
+                ${state.currentStep >= 3 ? `
+                    <div class="result-card animate-in">
+                        <h3 class="result-title">The Result</h3>
+                        <p class="result-text">
+                            After 12+ minutes and multiple frustrating iterations, you gave up and did it yourself manually.
+                        </p>
+                        <p class="result-conclusion">
+                            AI as a vending machine: You get what you ask for, but it's never quite right.
+                        </p>
+                        <button class="btn btn-primary" onclick="backToSelection()">Now see the Thought Architecture approach →</button>
+                    </div>
+                ` : ''}
+            `;
+
+            container.innerHTML = html;
+
+            // Add next button if not on last step
+            if (state.currentStep < 3) {
+                const nextButton = document.createElement('button');
+                nextButton.className = 'next-step-button grey';
+                nextButton.textContent = 'Next Step →';
+                nextButton.onclick = nextStep;
+                container.appendChild(nextButton);
+            }
+        }
+
+        // RENDER THOUGHT ARCHITECTURE VIEW
+        function renderThoughtArchStep() {
+            const step = thoughtArchSteps[state.currentStep];
+            const container = document.getElementById('thoughtarch-view');
+
+            let html = `
+                <div class="step-header animate-in">
+                    <div class="step-nav">
+                        <button class="back-button" onclick="backToSelection()">← Back to comparison</button>
+                    </div>
+                    <div class="step-title-section">
+                        <h1>👥 Thought Architecture™</h1>
+                        <p class="step-subtitle">Watch how human expertise + AI capability = transformation</p>
+                    </div>
+                </div>
+
+                <div class="step-card animate-in">
+                    <div class="step-card-header gradient">
+                        <div class="step-phase">${step.phase}</div>
+                        <div class="step-label">${step.label}</div>
+                    </div>
+                    <div class="step-content">
+                        <div class="message happening">
+                            <div class="message-label">WHAT'S HAPPENING</div>
+                            <div class="message-text message-large">${step.detail}</div>
+                        </div>
+
+                        ${step.contextAdded && step.contextAdded.length > 0 ? `
+                            <div class="context-section">
+                                <div class="context-title">Context Added to AI:</div>
+                                <div class="context-grid">
+                                    ${step.contextAdded.map(ctx => `
+                                        <div class="context-card">
+                                            ${ctx.logo ?
+                                                `<img src="${ctx.logo}" alt="${ctx.label}" class="context-logo" onerror="this.style.display='none'">` :
+                                                `<span class="context-icon">${ctx.icon}</span>`
+                                            }
+                                            <div>
+                                                <div class="context-label">${ctx.label}</div>
+                                                <div class="context-detail">${ctx.detail}</div>
+                                            </div>
+                                        </div>
+                                    `).join('')}
+                                </div>
+                            </div>
+                        ` : ''}
+
+                        ${step.aiRole ? `
+                            <div class="message ai-role">
+                                <div class="message-label">🤖 AI ROLE</div>
+                                <div class="message-text">${step.aiRole}</div>
+                            </div>
+                        ` : ''}
+
+                        ${step.humanRole ? `
+                            <div class="message human-role">
+                                <div class="message-label">👤 YOUR ROLE</div>
+                                <div class="message-text">${step.humanRole}</div>
+                            </div>
+                        ` : ''}
+
+                        ${step.aiAnalysis ? `
+                            <div class="message ai-role">
+                                <div class="message-label">🤖 AI ANALYSIS (based on YOUR data)</div>
+                                <div class="message-text">${step.aiAnalysis}</div>
+                            </div>
+                        ` : ''}
+
+                        ${step.humanRefinement ? `
+                            <div class="message human-role">
+                                <div class="message-label">👤 YOUR STRATEGIC REFINEMENT</div>
+                                <div class="message-text">${step.humanRefinement}</div>
+                            </div>
+                        ` : ''}
+
+                        ${step.finalOutput ? `
+                            <div class="message success">
+                                <div class="message-label">📦 FINAL DELIVERABLE</div>
+                                <div class="message-text">${step.finalOutput}</div>
+                            </div>
+                        ` : ''}
+
+                        ${step.memory ? `
+                            <div class="message memory">
+                                <div class="message-label">💾 INSTITUTIONAL MEMORY</div>
+                                <div class="message-text">${step.memory}</div>
+                            </div>
+                        ` : ''}
+
+                        <div class="message output">
+                            <div class="message-text">✓ ${step.output}</div>
+                        </div>
+                    </div>
+                </div>
+
+                ${state.currentStep >= 4 ? `
+                    <div class="result-card animate-in">
+                        <h3 class="result-title">The Transformation</h3>
+                        <p class="result-text">
+                            In the same amount of time, you have a deployment-ready strategy built on YOUR specific context, YOUR data, and YOUR expertise.
+                        </p>
+                        <p class="result-conclusion">
+                            AI as a thought partner: You get what you need, and it gets better every time.
+                        </p>
+                        <div class="result-quote">
+                            "One is a transaction. The other is transformation."
+                        </div>
+                    </div>
+                ` : ''}
+            `;
+
+            container.innerHTML = html;
+
+            // Add next button if not on last step
+            if (state.currentStep < 4) {
+                const nextButton = document.createElement('button');
+                nextButton.className = 'next-step-button primary';
+                nextButton.textContent = 'Next Step →';
+                nextButton.onclick = nextStep;
+                container.appendChild(nextButton);
+            }
+        }
+    </script>
+</body>
+</html>

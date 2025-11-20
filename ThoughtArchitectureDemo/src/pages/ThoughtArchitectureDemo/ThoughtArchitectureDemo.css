@@ -1,0 +1,689 @@
+/**
+ * Thought Architecture Demo Styles
+ * Matches main app design system
+ */
+
+/* Page Container */
+.ta-demo-page {
+  min-height: 100vh;
+  background: linear-gradient(135deg, var(--bg-light) 0%, #F0E8E8 100%);
+  padding: 40px 20px;
+}
+
+.ta-demo-container {
+  max-width: 1400px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+/* Main Header (Selection Screen) */
+.ta-demo-header {
+  text-align: center;
+  margin-bottom: 40px;
+  padding-bottom: 30px;
+  border-bottom: 3px solid var(--brand-red);
+}
+
+.ta-demo-main-title {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 3.5em;
+  font-weight: 900;
+  color: var(--brand-red);
+  margin: 0 0 10px 0;
+  letter-spacing: 6px;
+  text-transform: uppercase;
+}
+
+.ta-demo-main-subtitle {
+  font-size: 1.3em;
+  color: var(--primary-blue);
+  margin: 0 0 10px 0;
+  font-weight: 600;
+  letter-spacing: 3px;
+}
+
+.ta-demo-scenario {
+  font-size: 1.2em;
+  color: var(--text-light);
+  font-style: italic;
+  margin-top: 30px;
+}
+
+/* Path Selection Grid */
+.ta-demo-path-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 40px;
+}
+
+/* Path Cards */
+.ta-path-card {
+  background: var(--bg-card);
+  border-radius: 16px;
+  overflow: hidden;
+  border: 3px solid transparent;
+  box-shadow: var(--shadow-card);
+  transition: all 0.3s ease;
+  cursor: pointer;
+  text-align: left;
+  width: 100%;
+  padding: 0;
+}
+
+.ta-path-card:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-hover);
+}
+
+.ta-path-transactional {
+  border-color: var(--border-medium);
+}
+
+.ta-path-transactional:hover {
+  border-color: var(--text-medium);
+}
+
+.ta-path-thoughtarch {
+  border-color: var(--brand-red);
+}
+
+.ta-path-thoughtarch:hover {
+  border-color: #d11820;
+  box-shadow: 0 8px 30px rgba(237, 28, 36, 0.3);
+}
+
+/* Path Card Header */
+.ta-path-header {
+  padding: 40px;
+  color: white;
+}
+
+.ta-path-transactional .ta-path-header {
+  background: linear-gradient(135deg, #888888, #666666);
+}
+
+.ta-path-thoughtarch .ta-path-header {
+  background: linear-gradient(135deg, var(--brand-red), var(--primary-blue));
+}
+
+.ta-path-icon {
+  margin-bottom: 20px;
+}
+
+.ta-path-title {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 2em;
+  font-weight: 800;
+  margin: 0 0 15px 0;
+  letter-spacing: 1px;
+}
+
+.ta-path-subtitle {
+  font-size: 1.2em;
+  opacity: 0.95;
+  line-height: 1.4;
+}
+
+/* Path Card Body */
+.ta-path-body {
+  padding: 40px;
+}
+
+.ta-path-features {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  margin-bottom: 30px;
+}
+
+.ta-path-features p {
+  font-size: 1.1em;
+  color: var(--text-dark);
+  margin: 0;
+  font-weight: 500;
+}
+
+.ta-path-cta {
+  font-size: 1.2em;
+  font-weight: 700;
+  color: var(--brand-red);
+}
+
+/* Navigation Header (Step Pages) */
+.ta-demo-nav-header {
+  margin-bottom: 40px;
+}
+
+.ta-back-button {
+  background: none;
+  border: none;
+  color: var(--text-medium);
+  font-size: 1em;
+  cursor: pointer;
+  padding: 10px 0;
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: color 0.2s ease;
+}
+
+.ta-back-button:hover {
+  color: var(--text-dark);
+}
+
+.ta-demo-header-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 30px;
+}
+
+.ta-demo-title-section {
+  flex: 1;
+}
+
+.ta-demo-title-row {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin-bottom: 10px;
+}
+
+.ta-demo-icon-gray {
+  color: #888888;
+}
+
+.ta-demo-icon-red {
+  color: var(--brand-red);
+}
+
+.ta-demo-page-title {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 3em;
+  font-weight: 900;
+  color: var(--text-dark);
+  margin: 0;
+  letter-spacing: 1px;
+}
+
+.ta-demo-page-subtitle {
+  font-size: 1.1em;
+  color: var(--text-medium);
+  font-weight: 500;
+}
+
+/* Controls */
+.ta-demo-controls {
+  display: flex;
+  gap: 15px;
+  align-items: flex-start;
+  flex-shrink: 0;
+}
+
+.ta-btn {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 15px 30px;
+  border-radius: 8px;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 700;
+  font-size: 1em;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border: none;
+}
+
+.ta-btn-reset {
+  background: #888888;
+  color: white;
+}
+
+.ta-btn-reset:hover {
+  background: #666666;
+}
+
+.ta-btn-next-gray {
+  background: #666666;
+  color: white;
+}
+
+.ta-btn-next-gray:hover {
+  background: #555555;
+}
+
+.ta-btn-next-red {
+  background: var(--brand-red);
+  color: white;
+}
+
+.ta-btn-next-red:hover {
+  background: #d11820;
+  box-shadow: 0 4px 15px rgba(237, 28, 36, 0.3);
+}
+
+/* Step Cards */
+.ta-step-card {
+  background: var(--bg-card);
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: var(--shadow-card);
+  margin-bottom: 30px;
+}
+
+.ta-step-transactional {
+  border: 3px solid var(--border-medium);
+}
+
+.ta-step-thoughtarch {
+  border: 3px solid var(--brand-red);
+}
+
+/* Step Card Header */
+.ta-step-card-header {
+  background: var(--bg-light);
+  padding: 25px 30px;
+  border-bottom: 2px solid var(--border-light);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.ta-step-title {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 1.5em;
+  font-weight: 700;
+  color: var(--text-dark);
+  margin: 0;
+}
+
+.ta-step-time {
+  font-family: 'Courier New', monospace;
+  font-size: 0.9em;
+  color: var(--text-light);
+}
+
+.ta-step-card-header-gradient {
+  background: linear-gradient(135deg, var(--brand-red), var(--primary-blue));
+  padding: 30px;
+  color: white;
+}
+
+.ta-step-phase {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 1.8em;
+  font-weight: 900;
+  margin: 0 0 10px 0;
+  letter-spacing: 2px;
+}
+
+.ta-step-label {
+  font-size: 1.3em;
+  opacity: 0.95;
+  margin: 0;
+  font-weight: 500;
+}
+
+/* Step Content */
+.ta-step-content {
+  padding: 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+}
+
+/* Messages */
+.ta-message {
+  padding: 20px;
+  border-radius: 8px;
+  border-left: 4px solid transparent;
+}
+
+.ta-message-label {
+  font-size: 0.75em;
+  font-weight: 800;
+  letter-spacing: 1px;
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.ta-message-text {
+  color: var(--text-dark);
+  line-height: 1.7;
+  font-size: 1em;
+}
+
+.ta-message-text-large {
+  color: var(--text-dark);
+  line-height: 1.7;
+  font-size: 1.3em;
+  font-weight: 500;
+}
+
+.ta-message-mono {
+  font-family: 'Courier New', monospace;
+  font-size: 0.95em;
+  white-space: pre-line;
+}
+
+.ta-message-pre {
+  white-space: pre-line;
+  font-size: 0.95em;
+}
+
+.ta-message-text-thinking {
+  color: var(--text-medium);
+  font-style: italic;
+  font-size: 0.95em;
+}
+
+/* Message Types */
+.ta-message-user {
+  background: rgba(0, 160, 220, 0.1);
+  border-left-color: var(--primary-blue);
+}
+
+.ta-message-user .ta-message-label {
+  color: var(--primary-blue);
+}
+
+.ta-message-thinking {
+  background: var(--bg-light);
+  border: 2px solid var(--border-light);
+  border-left: 4px solid var(--border-medium);
+}
+
+.ta-message-thinking .ta-message-label {
+  color: var(--text-medium);
+}
+
+.ta-message-ai-output {
+  background: var(--bg-light);
+  border-left-color: var(--border-medium);
+}
+
+.ta-message-ai-output .ta-message-label {
+  color: var(--text-medium);
+}
+
+.ta-message-problem {
+  background: rgba(237, 28, 36, 0.08);
+  border-left-color: var(--brand-red);
+}
+
+.ta-message-problem .ta-message-label {
+  color: var(--brand-red);
+}
+
+.ta-message-problem .ta-message-text {
+  color: var(--brand-red);
+  font-weight: 600;
+}
+
+.ta-message-happening {
+  background: rgba(0, 160, 220, 0.1);
+  border-left-color: var(--primary-blue);
+}
+
+.ta-message-happening .ta-message-label {
+  color: var(--primary-blue);
+}
+
+.ta-message-ai-role,
+.ta-message-ai-analysis {
+  background: rgba(0, 160, 220, 0.08);
+  border-left-color: var(--primary-blue);
+}
+
+.ta-message-ai-role .ta-message-label,
+.ta-message-ai-analysis .ta-message-label {
+  color: var(--primary-blue);
+}
+
+.ta-message-human-role,
+.ta-message-human-refinement {
+  background: rgba(237, 28, 36, 0.08);
+  border-left-color: var(--brand-red);
+}
+
+.ta-message-human-role .ta-message-label,
+.ta-message-human-refinement .ta-message-label {
+  color: var(--brand-red);
+}
+
+.ta-message-deliverable {
+  background: rgba(16, 185, 129, 0.1);
+  border: 2px solid var(--success);
+  border-left: 4px solid var(--success);
+}
+
+.ta-message-deliverable .ta-message-label {
+  color: var(--success);
+}
+
+.ta-message-deliverable .ta-message-text {
+  font-weight: 600;
+}
+
+.ta-message-memory {
+  background: rgba(168, 85, 247, 0.1);
+  border: 2px solid #a855f7;
+  border-left: 4px solid #a855f7;
+}
+
+.ta-message-memory .ta-message-label {
+  color: #a855f7;
+}
+
+.ta-message-output {
+  background: linear-gradient(135deg, rgba(237, 28, 36, 0.1), rgba(0, 160, 220, 0.1));
+  padding: 20px;
+  border-radius: 8px;
+}
+
+.ta-message-output .ta-message-text {
+  color: var(--text-dark);
+  font-weight: 700;
+  font-size: 1.2em;
+}
+
+/* Context Section */
+.ta-context-section {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.ta-context-title {
+  font-size: 0.9em;
+  font-weight: 800;
+  color: var(--text-medium);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.ta-context-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 15px;
+}
+
+.ta-context-card {
+  background: linear-gradient(135deg, rgba(237, 28, 36, 0.05), rgba(0, 160, 220, 0.05));
+  border: 2px solid rgba(237, 28, 36, 0.2);
+  border-radius: 8px;
+  padding: 20px;
+}
+
+.ta-context-card-content {
+  display: flex;
+  align-items: flex-start;
+  gap: 15px;
+}
+
+.ta-context-icon {
+  color: var(--brand-red);
+  flex-shrink: 0;
+  margin-top: 4px;
+}
+
+.ta-context-logo {
+  width: 40px;
+  height: 40px;
+  object-fit: contain;
+  flex-shrink: 0;
+}
+
+.ta-context-label {
+  font-weight: 700;
+  color: var(--text-dark);
+  font-size: 0.95em;
+  margin-bottom: 5px;
+}
+
+.ta-context-detail {
+  color: var(--text-medium);
+  font-size: 0.85em;
+  line-height: 1.5;
+}
+
+/* Result Cards */
+.ta-result-card {
+  background: var(--bg-card);
+  border-radius: 12px;
+  padding: 40px;
+  box-shadow: var(--shadow-card);
+  margin-top: 30px;
+}
+
+.ta-result-failure {
+  border: 3px solid var(--brand-red);
+}
+
+.ta-result-success {
+  border: 3px solid var(--brand-red);
+}
+
+.ta-result-title {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 2em;
+  font-weight: 800;
+  color: var(--text-dark);
+  margin: 0 0 20px 0;
+}
+
+.ta-result-text {
+  font-size: 1.2em;
+  color: var(--text-dark);
+  line-height: 1.7;
+  margin-bottom: 20px;
+}
+
+.ta-result-conclusion {
+  font-size: 1.3em;
+  font-weight: 700;
+  color: var(--brand-red);
+  margin-bottom: 25px;
+}
+
+.ta-btn-try-other {
+  background: var(--brand-red);
+  color: white;
+  padding: 15px 30px;
+  border-radius: 8px;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 700;
+  font-size: 1em;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border: none;
+}
+
+.ta-btn-try-other:hover {
+  background: #d11820;
+  box-shadow: 0 4px 15px rgba(237, 28, 36, 0.3);
+}
+
+.ta-result-quote {
+  background: linear-gradient(135deg, rgba(237, 28, 36, 0.05), rgba(0, 160, 220, 0.05));
+  padding: 30px;
+  border-radius: 8px;
+  border-left: 4px solid var(--brand-red);
+  margin-top: 25px;
+}
+
+.ta-quote-text {
+  font-size: 1.3em;
+  color: var(--text-dark);
+  font-style: italic;
+  font-weight: 600;
+  text-align: center;
+  margin: 0;
+  line-height: 1.6;
+}
+
+/* Responsive */
+@media (max-width: 1200px) {
+  .ta-demo-path-grid {
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
+
+  .ta-demo-main-title {
+    font-size: 3em;
+  }
+
+  .ta-demo-page-title {
+    font-size: 2.5em;
+  }
+
+  .ta-context-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+  .ta-demo-page {
+    padding: 20px 15px;
+  }
+
+  .ta-demo-main-title {
+    font-size: 2.5em;
+  }
+
+  .ta-demo-main-subtitle {
+    font-size: 1.5em;
+  }
+
+  .ta-demo-page-title {
+    font-size: 2em;
+  }
+
+  .ta-demo-header-row {
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .ta-demo-controls {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .ta-step-card-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+
+  .ta-step-content {
+    padding: 25px;
+  }
+
+  .ta-path-header,
+  .ta-path-body {
+    padding: 30px 25px;
+  }
+}
