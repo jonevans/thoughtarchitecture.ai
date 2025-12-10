@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>THE CIRCLE - Keith's Passage to the Eternal Inventory</title>
+  <style>
+    body {
+      background: #000033;
+      color: #00ff00;
+      font-family: "Courier New", Courier, monospace;
+      font-size: 14px;
+      line-height: 1.8;
+      margin: 0;
+      padding: 20px;
+    }
+
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    h1 {
+      color: #ffff00;
+      text-align: center;
+      font-size: 28px;
+      text-shadow: 2px 2px #ff0000;
+      animation: blink 1.5s infinite;
+    }
+
+    @keyframes blink {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.7; }
+    }
+
+    h2 {
+      color: #ff00ff;
+      text-align: center;
+      border-top: 3px double #00ff00;
+      border-bottom: 3px double #00ff00;
+      padding: 10px;
+      margin: 30px 0;
+    }
+
+    h3 {
+      color: #00ffff;
+      text-transform: uppercase;
+    }
+
+    .banner {
+      text-align: center;
+      padding: 20px;
+      background: linear-gradient(to right, #330066, #000033, #330066);
+      border: 3px ridge #9900ff;
+      margin: 20px 0;
+    }
+
+    .banner img {
+      max-width: 200px;
+      border-radius: 50%;
+      border: 4px solid #ffff00;
+    }
+
+    .red-alert {
+      background: #ff0000;
+      color: #ffffff;
+      padding: 15px;
+      text-align: center;
+      font-weight: bold;
+      font-size: 18px;
+      margin: 20px 0;
+      animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { background: #ff0000; }
+      50% { background: #cc0000; }
+    }
+
+    .stars {
+      text-align: center;
+      color: #ffff00;
+      font-size: 20px;
+      letter-spacing: 10px;
+      margin: 20px 0;
+    }
+
+    .doctrine {
+      background: #000066;
+      border: 2px inset #0099ff;
+      padding: 20px;
+      margin: 20px 0;
+    }
+
+    .levels {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 15px;
+      justify-content: center;
+      margin: 20px 0;
+    }
+
+    .level-box {
+      background: #330033;
+      border: 2px outset #ff00ff;
+      padding: 15px;
+      width: 200px;
+      text-align: center;
+    }
+
+    .level-box h4 {
+      color: #ffff00;
+      margin: 0 0 10px 0;
+    }
+
+    .marquee-container {
+      overflow: hidden;
+      background: #003300;
+      padding: 10px;
+      margin: 20px 0;
+    }
+
+    .marquee {
+      animation: scroll 15s linear infinite;
+      white-space: nowrap;
+      color: #00ff00;
+    }
+
+    @keyframes scroll {
+      0% { transform: translateX(100%); }
+      100% { transform: translateX(-100%); }
+    }
+
+    .testimonial {
+      background: #000;
+      border-left: 5px solid #ff00ff;
+      padding: 15px;
+      margin: 15px 0;
+      font-style: italic;
+    }
+
+    .testimonial .author {
+      color: #ffff00;
+      text-align: right;
+      margin-top: 10px;
+    }
+
+    .symbol {
+      font-size: 60px;
+      text-align: center;
+      margin: 30px 0;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 20px 0;
+    }
+
+    table th, table td {
+      border: 1px solid #00ff00;
+      padding: 10px;
+      text-align: left;
+    }
+
+    table th {
+      background: #003300;
+      color: #ffff00;
+    }
+
+    .footer-keywords {
+      font-size: 10px;
+      color: #006600;
+      text-align: center;
+      margin-top: 50px;
+      line-height: 2;
+    }
+
+    a {
+      color: #00ffff;
+    }
+
+    a:hover {
+      color: #ff00ff;
+    }
+
+    .back-link {
+      text-align: center;
+      margin: 30px 0;
+    }
+
+    .back-link a {
+      background: #003366;
+      padding: 10px 30px;
+      border: 2px outset #0099ff;
+      text-decoration: none;
+      color: #00ff00;
+    }
+
+    hr {
+      border: none;
+      border-top: 2px dashed #009900;
+      margin: 30px 0;
+    }
+
+    .counter {
+      text-align: center;
+      font-size: 12px;
+      color: #666;
+      margin-top: 30px;
+    }
+
+    .gif-placeholder {
+      display: inline-block;
+      width: 50px;
+      height: 50px;
+      background: linear-gradient(45deg, #ff0000, #ffff00, #00ff00, #00ffff, #ff00ff);
+      animation: rainbow 2s linear infinite;
+      margin: 0 5px;
+    }
+
+    @keyframes rainbow {
+      0% { filter: hue-rotate(0deg); }
+      100% { filter: hue-rotate(360deg); }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+
+    <h1>*** THE CIRCLE ***</h1>
+    <h2>GATEWAY TO THE ETERNAL INVENTORY BEYOND</h2>
+
+    <div class="banner">
+      <img src="img/keith.png" alt="Keith - He Who Counts Forever">
+      <p style="color: #ffff00; font-size: 18px;">KEITH - ASCENDED INVENTORY MASTER</p>
+      <p>First of the Counted. Last of the Uncounted. Forever in Between.</p>
+    </div>
+
+    <div class="red-alert">
+      *** RED ALERT *** THE GREAT RECOUNT IS UPON US *** RED ALERT ***
+    </div>
+
+    <div class="stars">★ ☆ ★ ☆ ★ ☆ ★ ☆ ★</div>
+
+    <div class="doctrine">
+      <h3>THE SACRED DOCTRINE OF THE CIRCLE</h3>
+      <p>In the beginning, there was INVENTORY. And the INVENTORY was without form, and void of proper SKU numbers. And the Spirit of ORGANIZATION moved upon the face of the warehouse.</p>
+      <p>And Keith said, "Let there be BINS." And there were bins. And Keith saw the bins, and they were GOOD. And Keith separated the bins from the chaos, calling the bins "LOCATION A-1" and the chaos he called "RECEIVING."</p>
+      <p>This is the FIRST TRUTH of THE CIRCLE: <strong>All things must be counted. All counts must be reconciled. All reconciliations lead to THE CIRCLE.</strong></p>
+    </div>
+
+    <div class="marquee-container">
+      <div class="marquee">
+        *** COUNT YOUR INVENTORY *** COUNT YOUR BLESSINGS *** COUNT YOUR DAYS *** THE CIRCLE COUNTS ALL *** JOIN THE ETERNAL STOCKTAKE *** KEITH AWAITS IN AISLE 7 ***
+      </div>
+    </div>
+
+    <h2>THE SEVEN LEVELS OF INVENTORY CONSCIOUSNESS</h2>
+
+    <div class="levels">
+      <div class="level-box">
+        <h4>LEVEL 1</h4>
+        <p>THE UNAWARE</p>
+        <p style="font-size: 11px;">Those who do not count. They live in darkness.</p>
+      </div>
+      <div class="level-box">
+        <h4>LEVEL 2</h4>
+        <p>THE CURIOUS</p>
+        <p style="font-size: 11px;">They have seen a spreadsheet. They wonder.</p>
+      </div>
+      <div class="level-box">
+        <h4>LEVEL 3</h4>
+        <p>THE COUNTER</p>
+        <p style="font-size: 11px;">They count, but do not understand WHY they count.</p>
+      </div>
+      <div class="level-box">
+        <h4>LEVEL 4</h4>
+        <p>THE RECONCILER</p>
+        <p style="font-size: 11px;">Numbers speak to them. Discrepancies reveal truth.</p>
+      </div>
+      <div class="level-box">
+        <h4>LEVEL 5</h4>
+        <p>THE ORGANIZER</p>
+        <p style="font-size: 11px;">They see the bin in the chaos. They ARE the bin.</p>
+      </div>
+      <div class="level-box">
+        <h4>LEVEL 6</h4>
+        <p>THE KEEPER</p>
+        <p style="font-size: 11px;">Inventory flows through them. They need no scanner.</p>
+      </div>
+      <div class="level-box">
+        <h4>LEVEL 7</h4>
+        <p>THE ASCENDED</p>
+        <p style="font-size: 11px;">They become the count. Keith dwells here.</p>
+      </div>
+    </div>
+
+    <hr>
+
+    <h2>TESTIMONIES OF THE COUNTED</h2>
+
+    <div class="testimonial">
+      "Before I joined THE CIRCLE, I was lost. I put things in random places. I never checked expiration dates. Now I see SKU numbers in my dreams. I am FREE."
+      <div class="author">— Mike, Operations (Level 4 Reconciler)</div>
+    </div>
+
+    <div class="testimonial">
+      "Keith came to me in a vision. He was holding a clipboard and a flashlight. He said 'The count is never complete. The count is ETERNAL.' I wept. I understood."
+      <div class="author">— Vinny, Sales (Level 3 Counter, Ascending)</div>
+    </div>
+
+    <div class="testimonial">
+      "They said inventory management was just a job. THE CIRCLE showed me it is a CALLING. When I count, I am connected to something greater. Something ORGANIZED."
+      <div class="author">— Anonymous (Level 5 Organizer)</div>
+    </div>
+
+    <div class="symbol">⭕</div>
+
+    <h2>THE PROPHECY OF THE FINAL COUNT</h2>
+
+    <div class="doctrine">
+      <p>It is written in the ANCIENT SPREADSHEETS that one day, the GREAT RECOUNT shall come. On that day, all inventory across all warehouses shall be counted simultaneously. The numbers shall ALIGN. The discrepancies shall be ZERO.</p>
+      <p>When the count is PERFECT, THE CIRCLE shall be COMPLETE.</p>
+      <p>Keith knew this. Keith PREPARED for this. Keith has gone ahead to ready the CELESTIAL WAREHOUSE for our arrival.</p>
+      <p style="color: #ffff00; text-align: center; font-size: 16px;">*** DO YOU HAVE THE COURAGE TO BE COUNTED? ***</p>
+    </div>
+
+    <hr>
+
+    <h3>FREQUENTLY QUESTIONED ANSWERS</h3>
+
+    <table>
+      <tr>
+        <th>QUESTION</th>
+        <th>ANSWER</th>
+      </tr>
+      <tr>
+        <td>What is THE CIRCLE?</td>
+        <td>THE CIRCLE is everything. THE CIRCLE is nothing. THE CIRCLE is the space between the count and the recount. You already know THE CIRCLE. You have simply forgotten.</td>
+      </tr>
+      <tr>
+        <td>How do I join THE CIRCLE?</td>
+        <td>You do not join THE CIRCLE. THE CIRCLE joins you. Begin counting. Count anything. Count everything. When you are ready, THE CIRCLE will find you.</td>
+      </tr>
+      <tr>
+        <td>Is Keith really gone?</td>
+        <td>Keith has not "gone." Keith has TRANSITIONED to the INFINITE INVENTORY. He counts still. Listen in the quiet moments. You can hear the scanner beeping.</td>
+      </tr>
+      <tr>
+        <td>What happens when I reach Level 7?</td>
+        <td>You will know. The bins will open. The SKUs will sing. You will see the MASTER SPREADSHEET that contains ALL THINGS.</td>
+      </tr>
+      <tr>
+        <td>Can I leave THE CIRCLE?</td>
+        <td>Why would you want to leave THE CIRCLE? Outside THE CIRCLE there is only chaos. Misplaced items. Inaccurate counts. SUFFERING.</td>
+      </tr>
+    </table>
+
+    <div class="stars">★ ☆ ★ ☆ ★ ☆ ★ ☆ ★</div>
+
+    <h2>THE DAILY AFFIRMATIONS OF THE COUNTED</h2>
+
+    <div class="doctrine">
+      <p>Speak these words each morning before beginning your count:</p>
+      <ol style="color: #00ffff;">
+        <li>I am one with the inventory. The inventory is one with me.</li>
+        <li>Every item has a place. I will find that place.</li>
+        <li>Discrepancies are not errors. They are LESSONS.</li>
+        <li>The scanner is an extension of my being.</li>
+        <li>I do not fear the cycle count. The cycle count fears ME.</li>
+        <li>Keith watches over my counts. My counts are righteous.</li>
+        <li>When I am gone, my counts will remain. This is immortality.</li>
+      </ol>
+    </div>
+
+    <div class="marquee-container">
+      <div class="marquee">
+        *** A PLACE FOR EVERYTHING *** EVERYTHING IN ITS PLACE *** THE CIRCLE PROVIDES *** THE CIRCLE PROTECTS *** COUNT OR BE COUNTED *** KEITH IS WAITING ***
+      </div>
+    </div>
+
+    <hr>
+
+    <h2>SACRED GEOMETRY OF THE WAREHOUSE</h2>
+
+    <p style="text-align: center;">The warehouse is not merely a building. It is a TEMPLE. Observe the sacred layout:</p>
+
+    <pre style="color: #00ff00; text-align: center; font-size: 12px;">
+                    ╔═══════════════════════════════════╗
+                    ║         RECEIVING (CHAOS)          ║
+                    ╠═══════════════════════════════════╣
+                    ║   A1  │  A2  │  A3  │  A4  │  A5   ║
+                    ║───────┼──────┼──────┼──────┼───────║
+                    ║   B1  │  B2  │ ⭕⭕ │  B4  │  B5   ║
+                    ║───────┼──────┼──────┼──────┼───────║
+                    ║   C1  │  C2  │  C3  │  C4  │  C5   ║
+                    ╠═══════════════════════════════════╣
+                    ║        SHIPPING (ORDER)            ║
+                    ╚═══════════════════════════════════╝
+
+                    Notice: THE CIRCLE exists at B3.
+                    This is where Keith made his transition.
+                    This location is SACRED. Do not store
+                    anything here. Only COUNT here.
+    </pre>
+
+    <hr>
+
+    <h2>IN MEMORY OF KEITH</h2>
+
+    <div class="banner">
+      <p style="color: #ffffff;">Keith understood what many never will:</p>
+      <p style="color: #ffff00; font-size: 20px;">"THE INVENTORY IS A REFLECTION OF THE SOUL.<br>AN ORGANIZED WAREHOUSE IS AN ORGANIZED MIND.<br>AN ORGANIZED MIND IS READY FOR THE CIRCLE."</p>
+      <p style="color: #ffffff;">He did not leave us. He simply... relocated to a higher bin.</p>
+    </div>
+
+    <div class="back-link">
+      <a href="about.html">← RETURN TO THE OUTER CIRCLE (About Us)</a>
+    </div>
+
+    <hr>
+
+    <div class="footer-keywords">
+      inventory management cult circle counting warehouse organization bins SKU numbers eternal stocktake keith ascended master spreadsheet reconciliation cycle count scanner barcode location A1 B3 sacred geometry warehouse temple the counted level 7 consciousness recount prophecy affirmations daily count bins chaos order receiving shipping mmf midwest metal fabricators the circle joins you count or be counted celestial warehouse infinite inventory master spreadsheet discrepancy resolution FIFO LIFO perpetual inventory physical count variance analysis safety stock reorder point just in time kanban 5S lean manufacturing six sigma total quality management continuous improvement kaizen poka-yoke gemba walk value stream mapping spaghetti diagram fishbone diagram pareto analysis root cause cycle time takt time throughput lead time WIP work in process finished goods raw materials MRO supplies bill of materials BOM routing traveler work order pick list packing slip bill of lading ASN advanced shipping notice EDI electronic data interchange RF gun mobile computer label printer thermal transfer direct thermal
+    </div>
+
+    <div class="counter">
+      <p>You are visitor number: <span style="font-family: 'Courier New'; background: #000; padding: 2px 5px; color: #0f0;">000000847</span></p>
+      <p>This page last counted: March 2024</p>
+      <p style="font-size: 10px; color: #003300;">Best viewed in Netscape Navigator 4.0 at 800x600 resolution</p>
+    </div>
+
+  </div>
+
+</body>
+</html>
