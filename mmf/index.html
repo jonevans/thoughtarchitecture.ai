@@ -1,0 +1,575 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Midwest Metal Fabricators - Custom Metal Fabrication</title>
+  <style>
+    /* Basic reset */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 15px;
+      line-height: 1.6;
+      color: #333;
+      background: #f5f5f5;
+    }
+
+    /* Header - classic blue gradient look */
+    header {
+      background: linear-gradient(to bottom, #1e3a5f, #2c5282);
+      color: white;
+      padding: 15px 20px;
+      border-bottom: 4px solid #d69e2e;
+    }
+
+    .header-content {
+      max-width: 1000px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .logo-icon {
+      font-size: 36px;
+    }
+
+    .logo h1 {
+      font-size: 24px;
+      font-weight: bold;
+      letter-spacing: 1px;
+    }
+
+    .logo .tagline {
+      font-size: 12px;
+      color: #d69e2e;
+      font-style: italic;
+    }
+
+    .header-contact {
+      text-align: right;
+      font-size: 13px;
+    }
+
+    .header-contact .phone {
+      font-size: 18px;
+      font-weight: bold;
+      color: #d69e2e;
+    }
+
+    /* Navigation - slightly dated table-style */
+    nav {
+      background: #2c5282;
+      border-bottom: 1px solid #1e3a5f;
+    }
+
+    nav ul {
+      max-width: 1000px;
+      margin: 0 auto;
+      list-style: none;
+      display: flex;
+      flex-wrap: wrap;
+    }
+
+    nav ul li a {
+      display: block;
+      color: white;
+      text-decoration: none;
+      padding: 12px 20px;
+      font-size: 14px;
+      font-weight: bold;
+      text-transform: uppercase;
+      border-right: 1px solid #1e3a5f;
+    }
+
+    nav ul li a:hover {
+      background: #d69e2e;
+      color: #1e3a5f;
+    }
+
+    /* Hero section with welding photo */
+    .hero {
+      background: linear-gradient(rgba(30, 58, 95, 0.8), rgba(30, 58, 95, 0.85)),
+                  url('https://images.unsplash.com/photo-1738162837408-5fbf53f0b97a?ixlib=rb-4.1.0&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=1200&fit=max');
+      background-size: cover;
+      background-position: center;
+      color: white;
+      text-align: center;
+      padding: 60px 20px;
+    }
+
+    .hero h2 {
+      font-size: 32px;
+      margin-bottom: 15px;
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+    }
+
+    .hero p {
+      font-size: 18px;
+      max-width: 600px;
+      margin: 0 auto 25px;
+    }
+
+    .hero .cta-button {
+      display: inline-block;
+      background: #d69e2e;
+      color: #1e3a5f;
+      padding: 12px 30px;
+      text-decoration: none;
+      font-weight: bold;
+      font-size: 16px;
+      border-radius: 3px;
+    }
+
+    .hero .cta-button:hover {
+      background: #ecc94b;
+    }
+
+    /* Main content */
+    main {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 30px 20px;
+    }
+
+    /* Section styling */
+    section {
+      background: white;
+      margin-bottom: 25px;
+      padding: 25px;
+      border: 1px solid #ddd;
+      box-shadow: 2px 2px 5px rgba(0,0,0,0.1);
+    }
+
+    section h2 {
+      color: #1e3a5f;
+      font-size: 22px;
+      border-bottom: 2px solid #d69e2e;
+      padding-bottom: 8px;
+      margin-bottom: 15px;
+    }
+
+    section h3 {
+      color: #2c5282;
+      font-size: 16px;
+      margin: 15px 0 8px;
+    }
+
+    /* Two column layout - old school */
+    .two-col {
+      display: flex;
+      gap: 25px;
+      flex-wrap: wrap;
+    }
+
+    .two-col > div {
+      flex: 1;
+      min-width: 280px;
+    }
+
+    /* Lists */
+    ul {
+      margin-left: 20px;
+    }
+
+    ul li {
+      margin-bottom: 5px;
+    }
+
+    /* Stats boxes */
+    .stats {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 15px;
+      margin: 20px 0;
+    }
+
+    .stat-box {
+      flex: 1;
+      min-width: 140px;
+      background: #f0f4f8;
+      border: 1px solid #2c5282;
+      padding: 15px;
+      text-align: center;
+    }
+
+    .stat-box .number {
+      font-size: 28px;
+      font-weight: bold;
+      color: #d69e2e;
+    }
+
+    .stat-box .label {
+      font-size: 12px;
+      color: #1e3a5f;
+      text-transform: uppercase;
+    }
+
+    /* Equipment table */
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 15px 0;
+    }
+
+    table th, table td {
+      border: 1px solid #ccc;
+      padding: 10px;
+      text-align: left;
+    }
+
+    table th {
+      background: #2c5282;
+      color: white;
+      font-size: 13px;
+    }
+
+    table tr:nth-child(even) {
+      background: #f9f9f9;
+    }
+
+    /* Industries served - icon boxes */
+    .industries {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin: 15px 0;
+    }
+
+    .industry-tag {
+      background: #edf2f7;
+      border: 1px solid #2c5282;
+      padding: 8px 15px;
+      font-size: 13px;
+      color: #1e3a5f;
+    }
+
+    /* Contact section */
+    .contact-info {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 30px;
+    }
+
+    .location-box {
+      flex: 1;
+      min-width: 200px;
+      background: #f0f4f8;
+      padding: 15px;
+      border-left: 3px solid #d69e2e;
+    }
+
+    .location-box h4 {
+      color: #1e3a5f;
+      margin-bottom: 8px;
+    }
+
+    .location-box p {
+      font-size: 13px;
+      margin-bottom: 3px;
+    }
+
+    /* Footer */
+    footer {
+      background: #1e3a5f;
+      color: #ccc;
+      text-align: center;
+      padding: 20px;
+      font-size: 12px;
+    }
+
+    footer a {
+      color: #d69e2e;
+    }
+
+    /* "Last updated" - that dated touch */
+    .last-updated {
+      font-size: 11px;
+      color: #999;
+      font-style: italic;
+      margin-top: 10px;
+    }
+
+    /* Responsive */
+    @media (max-width: 600px) {
+      .header-content {
+        flex-direction: column;
+        text-align: center;
+      }
+      .header-contact {
+        text-align: center;
+        margin-top: 10px;
+      }
+      nav ul {
+        justify-content: center;
+      }
+      nav ul li a {
+        padding: 10px 12px;
+        font-size: 12px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="header-content">
+      <div class="logo">
+        <span class="logo-icon">🏭</span>
+        <div>
+          <h1>MIDWEST METAL FABRICATORS</h1>
+          <div class="tagline">Quality. Precision. Delivered.</div>
+        </div>
+      </div>
+      <div class="header-contact">
+        <div class="phone">1-800-555-WELD</div>
+        <div>info@midwestmetalfab.com</div>
+        <div>Mon-Fri: 7:00 AM - 5:00 PM CST</div>
+      </div>
+    </div>
+  </header>
+
+  <nav>
+    <ul>
+      <li><a href="#home">Home</a></li>
+      <li><a href="#services">Services</a></li>
+      <li><a href="#equipment">Equipment</a></li>
+      <li><a href="#industries">Industries</a></li>
+      <li><a href="#about">About Us</a></li>
+      <li><a href="#contact">Contact</a></li>
+      <li><a href="#rfq">Request Quote</a></li>
+    </ul>
+  </nav>
+
+  <div class="hero">
+    <h2>Your Trusted Partner in Custom Metal Fabrication</h2>
+    <p>Serving Midwest manufacturers since 1987 with precision cutting, forming, welding, and finishing services.</p>
+    <a href="#rfq" class="cta-button">GET A FREE QUOTE</a>
+  </div>
+
+  <main>
+
+    <section id="about">
+      <h2>About Midwest Metal Fabricators</h2>
+      <div class="stats">
+        <div class="stat-box">
+          <div class="number">85</div>
+          <div class="label">Employees</div>
+        </div>
+        <div class="stat-box">
+          <div class="number">3</div>
+          <div class="label">Locations</div>
+        </div>
+        <div class="stat-box">
+          <div class="number">35+</div>
+          <div class="label">Years Experience</div>
+        </div>
+        <div class="stat-box">
+          <div class="number">500+</div>
+          <div class="label">Active Customers</div>
+        </div>
+      </div>
+      <p>Midwest Metal Fabricators (MMF) is a privately held, mid-sized fabrication company specializing in precision metal components and assemblies for regional manufacturers. With three strategically located facilities across the Midwest, we provide the speed and flexibility of a local job shop with the capabilities and consistency of a larger operation.</p>
+      <p style="margin-top: 10px;">We're known for being <strong>faster than the big shops</strong> and <strong>more capable than the small ones</strong>. Our customers stay with us because we're reliable, easy to work with, and we deliver quality parts on time.</p>
+    </section>
+
+    <section id="services">
+      <h2>Our Services</h2>
+      <div class="two-col">
+        <div>
+          <h3>Core Fabrication Services</h3>
+          <ul>
+            <li>Laser cutting (steel, stainless, aluminum)</li>
+            <li>CNC forming & bending</li>
+            <li>MIG/TIG welding</li>
+            <li>Robotic welding</li>
+            <li>Secondary machining operations</li>
+            <li>Powder coating and finishing</li>
+            <li>Sub-assembly and integration</li>
+          </ul>
+        </div>
+        <div>
+          <h3>Engineering & Prototyping</h3>
+          <ul>
+            <li>Rapid prototyping for new product development</li>
+            <li>Design-for-manufacturability (DFM) consulting</li>
+            <li>Reverse engineering services</li>
+            <li>Short-run pilot production</li>
+          </ul>
+          <h3>Production Services</h3>
+          <ul>
+            <li>Small-to-medium batch production (10-2,500 units)</li>
+            <li>Annual blanket orders</li>
+            <li>JIT replenishment programs</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section id="equipment">
+      <h2>Equipment & Capabilities</h2>
+      <div style="float: right; margin: 0 0 15px 20px; width: 280px;">
+        <img src="https://images.unsplash.com/photo-1711418235334-8895331a6cf9?ixlib=rb-4.1.0&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=400&fit=max" alt="CNC cutting machine in action" style="width: 100%; border: 3px solid #2c5282;">
+        <p style="font-size: 11px; color: #666; margin-top: 5px; text-align: center;">Our fiber laser in action</p>
+      </div>
+      <p>Our facilities are equipped with modern machinery to handle your fabrication needs:</p>
+      <table>
+        <tr>
+          <th>Equipment Type</th>
+          <th>Quantity</th>
+          <th>Capabilities</th>
+        </tr>
+        <tr>
+          <td>Fiber Laser Cutters</td>
+          <td>3</td>
+          <td>Up to 1" steel, 3/4" stainless, 1/2" aluminum</td>
+        </tr>
+        <tr>
+          <td>CNC Press Brakes</td>
+          <td>6</td>
+          <td>Up to 14' length, 300 ton capacity</td>
+        </tr>
+        <tr>
+          <td>Welding Stations</td>
+          <td>12</td>
+          <td>MIG, TIG, and flux core capabilities</td>
+        </tr>
+        <tr>
+          <td>Robotic Weld Cell</td>
+          <td>1</td>
+          <td>High-volume repeat parts (new in 2023!)</td>
+        </tr>
+        <tr>
+          <td>Powder Coat Line</td>
+          <td>1</td>
+          <td>Parts up to 8' x 4' x 4'</td>
+        </tr>
+        <tr>
+          <td>CNC Machining Center</td>
+          <td>2</td>
+          <td>Secondary operations, drilling, tapping</td>
+        </tr>
+      </table>
+      <p class="last-updated">Equipment list updated March 2024</p>
+    </section>
+
+    <section id="industries">
+      <h2>Industries We Serve</h2>
+      <p>MMF provides custom fabrication to manufacturers across a variety of sectors:</p>
+      <div class="industries">
+        <span class="industry-tag">Agricultural Equipment</span>
+        <span class="industry-tag">HVAC & Sheet Metal</span>
+        <span class="industry-tag">Trucking & Trailer OEMs</span>
+        <span class="industry-tag">Industrial Machinery</span>
+        <span class="industry-tag">Construction Products</span>
+        <span class="industry-tag">Retail Fixtures & POS</span>
+        <span class="industry-tag">Specialty Vehicles</span>
+        <span class="industry-tag">Food Processing Equipment</span>
+      </div>
+      <h3>Typical Customer Profile</h3>
+      <ul>
+        <li>Companies with $10M - $250M in revenue</li>
+        <li>Engineering-driven organizations</li>
+        <li>Need high-quality parts without running their own fab shop</li>
+        <li>Value reliability and on-time delivery over lowest price</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>Why Choose MMF?</h2>
+      <div class="two-col">
+        <div>
+          <h3>Speed & Flexibility</h3>
+          <ul>
+            <li>Fast quoting (usually within 24-48 hours)</li>
+            <li>Prototype turnaround in 1-2 weeks</li>
+            <li>Flexible scheduling for rush orders</li>
+          </ul>
+          <h3>Quality & Consistency</h3>
+          <ul>
+            <li>ISO 9001:2015 registered</li>
+            <li>AWS certified welders on staff</li>
+            <li>First article inspection on all new parts</li>
+          </ul>
+        </div>
+        <div>
+          <h3>Experience & Expertise</h3>
+          <ul>
+            <li>35+ years in business</li>
+            <li>Low employee turnover (avg. tenure 8+ years)</li>
+            <li>Dedicated engineering support</li>
+          </ul>
+          <h3>Regional Advantage</h3>
+          <ul>
+            <li>3 Midwest locations for fast delivery</li>
+            <li>Reduced freight costs</li>
+            <li>Easy site visits and collaboration</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact">
+      <h2>Our Locations</h2>
+      <div class="contact-info">
+        <div class="location-box">
+          <h4>📍 Headquarters - Rockford, IL</h4>
+          <p>4521 Industrial Parkway</p>
+          <p>Rockford, IL 61109</p>
+          <p>Phone: (815) 555-1200</p>
+          <p>Fax: (815) 555-1201</p>
+        </div>
+        <div class="location-box">
+          <h4>📍 West Facility - Davenport, IA</h4>
+          <p>892 Commerce Drive</p>
+          <p>Davenport, IA 52806</p>
+          <p>Phone: (563) 555-3400</p>
+          <p>Fax: (563) 555-3401</p>
+        </div>
+        <div class="location-box">
+          <h4>📍 South Facility - Decatur, IL</h4>
+          <p>1105 Manufacturing Blvd</p>
+          <p>Decatur, IL 62526</p>
+          <p>Phone: (217) 555-7800</p>
+          <p>Fax: (217) 555-7801</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="rfq">
+      <h2>Request a Quote</h2>
+      <p>Ready to get started? Send us your drawings and specifications and we'll provide a competitive quote within 24-48 hours.</p>
+      <p style="margin-top: 15px;"><strong>Email:</strong> <a href="mailto:quotes@midwestmetalfab.com">quotes@midwestmetalfab.com</a></p>
+      <p><strong>Phone:</strong> 1-800-555-WELD (1-800-555-9353)</p>
+      <p><strong>Fax:</strong> (815) 555-1201</p>
+      <p style="margin-top: 15px; font-size: 13px; color: #666;">Please include: Part drawings (PDF, DXF, or STEP files), quantity needed, material specifications, and required delivery date.</p>
+      <p class="last-updated">We accept: SolidWorks, AutoCAD, and most standard CAD formats</p>
+    </section>
+
+  </main>
+
+  <footer>
+    <p>&copy; 2024 Midwest Metal Fabricators, Inc. All Rights Reserved.</p>
+    <p style="margin-top: 5px;">
+      <a href="#">Privacy Policy</a> |
+      <a href="#">Terms of Service</a> |
+      <a href="#">Careers</a>
+    </p>
+    <p class="last-updated">Website designed by Tom's nephew Kevin &bull; Last updated: March 2024</p>
+  </footer>
+
+</body>
+</html>
