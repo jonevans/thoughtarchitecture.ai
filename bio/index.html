@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Jon Evans | Thought Architecture</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,400;0,600;1,400&family=Source+Sans+3:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <style>
+    :root {
+      --color-bg: #ffffff;
+      --color-text: #1a1a1a;
+      --color-text-muted: #666666;
+      --color-accent: #c00000;
+      --color-border: #e0e0e0;
+      --color-bg-subtle: #f8f8f8;
+      --font-serif: 'Crimson Pro', Cambria, Georgia, serif;
+      --font-sans: 'Source Sans 3', Calibri, -apple-system, sans-serif;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      font-size: 17px;
+    }
+
+    body {
+      font-family: var(--font-serif);
+      background: var(--color-bg);
+      color: var(--color-text);
+      line-height: 1.7;
+      min-height: 100vh;
+    }
+
+    .container {
+      max-width: 760px;
+      margin: 0 auto;
+      padding: 3rem 2rem 4rem;
+    }
+
+    /* Header */
+    header {
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+
+    .portrait {
+      width: 160px;
+      height: 160px;
+      border-radius: 50%;
+      overflow: hidden;
+      margin: 0 auto 1.5rem;
+      border: 3px solid var(--color-border);
+    }
+
+    .portrait img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center top;
+    }
+
+    header h1 {
+      font-family: var(--font-sans);
+      font-size: 2.4rem;
+      font-weight: 700;
+      color: var(--color-accent);
+      letter-spacing: -0.01em;
+      margin-bottom: 0.4rem;
+    }
+
+    header .tagline {
+      font-family: var(--font-sans);
+      font-size: 1rem;
+      font-style: italic;
+      color: var(--color-text-muted);
+    }
+
+    header .contact {
+      font-family: var(--font-sans);
+      font-size: 0.9rem;
+      color: var(--color-text-muted);
+      margin-top: 0.5rem;
+    }
+
+    header .contact a {
+      color: var(--color-text-muted);
+      text-decoration: none;
+    }
+
+    header .contact a:hover {
+      color: var(--color-accent);
+    }
+
+    /* Divider */
+    hr {
+      border: none;
+      border-top: 1px solid var(--color-border);
+      margin: 2rem 0;
+    }
+
+    /* Section headings */
+    h2 {
+      font-family: var(--font-sans);
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--color-accent);
+      text-transform: uppercase;
+      letter-spacing: 0.03em;
+      margin-bottom: 1rem;
+    }
+
+    /* Profile section */
+    .profile p {
+      margin-bottom: 1.25rem;
+      text-align: justify;
+      font-size: 1.05rem;
+    }
+
+    .profile em {
+      font-style: italic;
+    }
+
+    .profile .closing {
+      font-style: italic;
+      color: var(--color-text-muted);
+      margin-top: 0.25rem;
+      margin-bottom: 0;
+    }
+
+    /* Links section */
+    .links-section {
+      margin-top: 2.5rem;
+    }
+
+    .links-list {
+      list-style: none;
+    }
+
+    .links-list li {
+      margin-bottom: 1rem;
+      padding-left: 1rem;
+      border-left: 2px solid var(--color-border);
+    }
+
+    .links-list li:hover {
+      border-left-color: var(--color-accent);
+    }
+
+    .links-list a {
+      text-decoration: none;
+      color: var(--color-text);
+      display: block;
+    }
+
+    .links-list .link-title {
+      font-family: var(--font-sans);
+      font-weight: 600;
+      font-size: 1rem;
+      margin-bottom: 0.15rem;
+    }
+
+    .links-list .link-title:hover {
+      color: var(--color-accent);
+    }
+
+    .links-list .link-desc {
+      font-size: 0.9rem;
+      color: var(--color-text-muted);
+      line-height: 1.5;
+    }
+
+    /* Media section */
+    .media-section {
+      margin-top: 2.5rem;
+    }
+
+    .media-list {
+      list-style: none;
+    }
+
+    .media-list li {
+      margin-bottom: 0.75rem;
+      padding-left: 1rem;
+      border-left: 2px solid var(--color-border);
+    }
+
+    .media-list li:hover {
+      border-left-color: var(--color-accent);
+    }
+
+    .media-list a {
+      text-decoration: none;
+      color: var(--color-text);
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: 1rem;
+    }
+
+    .media-list .media-title {
+      font-family: var(--font-sans);
+      font-weight: 600;
+      font-size: 0.95rem;
+    }
+
+    .media-list .media-title:hover {
+      color: var(--color-accent);
+    }
+
+    .media-list .media-type {
+      font-family: var(--font-sans);
+      font-size: 0.75rem;
+      color: var(--color-text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.03em;
+      flex-shrink: 0;
+    }
+
+    /* Footer */
+    footer {
+      margin-top: 3rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid var(--color-border);
+      text-align: center;
+    }
+
+    footer .brand {
+      font-family: var(--font-sans);
+      font-size: 0.9rem;
+      color: var(--color-text-muted);
+    }
+
+    footer .brand span {
+      color: var(--color-accent);
+      font-weight: 600;
+    }
+
+    /* Mobile */
+    @media (max-width: 600px) {
+      html {
+        font-size: 16px;
+      }
+
+      .container {
+        padding: 2rem 1.5rem 3rem;
+      }
+
+      .portrait {
+        width: 130px;
+        height: 130px;
+      }
+
+      header h1 {
+        font-size: 2rem;
+      }
+
+      .media-list a {
+        flex-direction: column;
+        gap: 0.2rem;
+      }
+
+      .media-list .media-type {
+        font-size: 0.7rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <div class="portrait">
+        <img src="jon-evans.png" alt="Jon Evans">
+      </div>
+      <h1>JON A. EVANS</h1>
+      <p class="tagline">Chief AI Officer | Human-Centered Technologist | Strategic Futurist</p>
+      <p class="contact">Chicago, IL · <a href="mailto:jevans@impactnetworking.com">jevans@impactnetworking.com</a></p>
+    </header>
+
+    <hr>
+
+    <section class="profile">
+      <h2>Profile</h2>
+      <p>Technology executive with over 30 years of experience navigating disruptive innovation, from the dot-com boom through cloud infrastructure to the current AI transformation. As Chief AI Officer at Impact Networking, I lead a dual mission: accelerating AI adoption across the enterprise while developing frameworks for client transformation.</p>
+      
+      <p>My career includes pioneering work in early e-commerce, content management systems, and streaming media, including founding a video streaming startup five years before YouTube. I've developed original frameworks for human-AI collaboration, most notably <em>Thought Architecture™</em>, a methodology grounded in organizational learning theory that guides organizations toward AI implementations that amplify human intelligence rather than merely automate tasks.</p>
+      
+      <p>Technology should serve human flourishing, not replace it. My work holds that line, especially when the pressure to automate and optimize threatens to hollow out what makes work meaningful in the first place.</p>
+      
+      <p class="closing">That's the real work.</p>
+    </section>
+
+    <section class="links-section">
+      <h2>Academic Profile</h2>
+      <ul class="links-list">
+        <li>
+          <a href="Jon_Evans_Academic_Profile_Red.pdf" target="_blank" rel="noopener">
+            <div class="link-title">Full Curriculum Vitae (PDF)</div>
+            <div class="link-desc">Teaching philosophy, publications, speaking, professional experience, and credentials</div>
+          </a>
+        </li>
+        <li>
+          <a href="https://linkedin.com/in/jonevans666" target="_blank" rel="noopener">
+            <div class="link-title">LinkedIn</div>
+            <div class="link-desc">Ongoing commentary on AI, transformation, and the future of work</div>
+          </a>
+        </li>
+      </ul>
+    </section>
+
+    <section class="media-section">
+      <h2>Selected Media & Commentary</h2>
+      <ul class="media-list">
+        <li>
+          <a href="https://www.linkedin.com/posts/jonevans666_ai-digitalliteracy-generativeai-activity-7207074369980821504-y3YZ" target="_blank" rel="noopener">
+            <span class="media-title">The Intersection of Truth and Technology</span>
+            <span class="media-type">Commentary</span>
+          </a>
+        </li>
+        <li>
+          <a href="https://www.linkedin.com/events/7338637322814464000/" target="_blank" rel="noopener">
+            <span class="media-title">AI Connect: Then, Now, Next</span>
+            <span class="media-type">Live Event</span>
+          </a>
+        </li>
+        <li>
+          <a href="https://www.linkedin.com/posts/jonevans666_ai-futureofwork-thoughtarchitecture-activity-7331426484970053632-u-cS" target="_blank" rel="noopener">
+            <span class="media-title">AI and the Future of Work</span>
+            <span class="media-type">Conference Recap</span>
+          </a>
+        </li>
+        <li>
+          <a href="https://www.linkedin.com/posts/jonevans666_thoughtarchitecture-ai-activity-7328472572914728960-DbWV" target="_blank" rel="noopener">
+            <span class="media-title">AI as Thought Partner</span>
+            <span class="media-type">Commentary</span>
+          </a>
+        </li>
+        <li>
+          <a href="https://www.linkedin.com/posts/knownwell_ai-podcast-artificialintelligence-activity-7252321043782975488-p5PH" target="_blank" rel="noopener">
+            <span class="media-title">AI Knowhow Podcast</span>
+            <span class="media-type">Highlight Reel</span>
+          </a>
+        </li>
+      </ul>
+    </section>
+
+    <footer>
+      <div class="brand">Thought <span>Architecture</span>™</div>
+    </footer>
+  </div>
+</body>
+</html>
