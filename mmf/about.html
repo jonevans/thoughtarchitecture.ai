@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About Us | Midwest Metal Fabricators</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 15px;
+      line-height: 1.6;
+      color: #333;
+      background: #f5f5f5;
+    }
+
+    header {
+      background: linear-gradient(to bottom, #1e3a5f, #2c5282);
+      color: white;
+      padding: 15px 20px;
+      border-bottom: 4px solid #d69e2e;
+    }
+
+    .header-content {
+      max-width: 1000px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .logo-icon {
+      font-size: 36px;
+    }
+
+    .logo h1 {
+      font-size: 24px;
+      font-weight: bold;
+      letter-spacing: 1px;
+    }
+
+    .logo h1 a {
+      color: white;
+      text-decoration: none;
+    }
+
+    .logo .tagline {
+      font-size: 12px;
+      color: #d69e2e;
+      font-style: italic;
+    }
+
+    .header-contact {
+      text-align: right;
+      font-size: 13px;
+    }
+
+    .header-contact .phone {
+      font-size: 18px;
+      font-weight: bold;
+      color: #d69e2e;
+    }
+
+    nav {
+      background: #2c5282;
+      border-bottom: 1px solid #1e3a5f;
+    }
+
+    nav ul {
+      max-width: 1000px;
+      margin: 0 auto;
+      list-style: none;
+      display: flex;
+      flex-wrap: wrap;
+    }
+
+    nav ul li a {
+      display: block;
+      color: white;
+      text-decoration: none;
+      padding: 12px 20px;
+      font-size: 14px;
+      font-weight: bold;
+      text-transform: uppercase;
+      border-right: 1px solid #1e3a5f;
+    }
+
+    nav ul li a:hover,
+    nav ul li a.active {
+      background: #d69e2e;
+      color: #1e3a5f;
+    }
+
+    .page-title {
+      background: #1e3a5f;
+      color: white;
+      text-align: center;
+      padding: 40px 20px;
+    }
+
+    .page-title h2 {
+      font-size: 28px;
+      margin-bottom: 10px;
+    }
+
+    .page-title p {
+      font-size: 16px;
+      color: #ccc;
+    }
+
+    main {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 30px 20px;
+    }
+
+    .intro {
+      background: white;
+      padding: 25px;
+      margin-bottom: 30px;
+      border: 1px solid #ddd;
+      box-shadow: 2px 2px 5px rgba(0,0,0,0.1);
+      text-align: center;
+    }
+
+    .intro h3 {
+      color: #1e3a5f;
+      font-size: 20px;
+      margin-bottom: 15px;
+    }
+
+    .intro p {
+      max-width: 700px;
+      margin: 0 auto;
+    }
+
+    .team-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 25px;
+    }
+
+    .team-member {
+      background: white;
+      border: 1px solid #ddd;
+      box-shadow: 2px 2px 5px rgba(0,0,0,0.1);
+      overflow: hidden;
+    }
+
+    .team-member-header {
+      background: #2c5282;
+      color: white;
+      padding: 15px;
+      display: flex;
+      align-items: center;
+      gap: 15px;
+    }
+
+    .team-member-photo {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      border: 3px solid #d69e2e;
+      object-fit: cover;
+    }
+
+    .team-member-name h3 {
+      font-size: 18px;
+      margin-bottom: 3px;
+    }
+
+    .team-member-name .title {
+      font-size: 13px;
+      color: #d69e2e;
+    }
+
+    .team-member-body {
+      padding: 20px;
+    }
+
+    .team-member-bio {
+      font-size: 14px;
+      margin-bottom: 15px;
+      color: #444;
+    }
+
+    .team-member-quote {
+      background: #f0f4f8;
+      border-left: 3px solid #d69e2e;
+      padding: 12px 15px;
+      font-style: italic;
+      font-size: 13px;
+      color: #555;
+    }
+
+    .team-member-quote::before {
+      content: '"';
+      font-size: 24px;
+      color: #d69e2e;
+      font-weight: bold;
+      line-height: 0;
+      vertical-align: -5px;
+      margin-right: 5px;
+    }
+
+    .team-member-years {
+      font-size: 11px;
+      color: #888;
+      margin-top: 10px;
+      text-transform: uppercase;
+    }
+
+    /* Leadership highlight */
+    .team-member.leadership {
+      grid-column: span 2;
+    }
+
+    .team-member.leadership .team-member-header {
+      background: #1e3a5f;
+    }
+
+    .team-member.leadership .team-member-photo {
+      width: 100px;
+      height: 100px;
+    }
+
+    footer {
+      background: #1e3a5f;
+      color: #ccc;
+      text-align: center;
+      padding: 20px;
+      font-size: 12px;
+      margin-top: 30px;
+    }
+
+    footer a {
+      color: #d69e2e;
+    }
+
+    .last-updated {
+      font-size: 11px;
+      color: #999;
+      font-style: italic;
+      margin-top: 10px;
+    }
+
+    @media (max-width: 700px) {
+      .team-member.leadership {
+        grid-column: span 1;
+      }
+      .header-content {
+        flex-direction: column;
+        text-align: center;
+      }
+      .header-contact {
+        text-align: center;
+        margin-top: 10px;
+      }
+      nav ul {
+        justify-content: center;
+      }
+      nav ul li a {
+        padding: 10px 12px;
+        font-size: 12px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="header-content">
+      <div class="logo">
+        <span class="logo-icon">🏭</span>
+        <div>
+          <h1><a href="index.html">MIDWEST METAL FABRICATORS</a></h1>
+          <div class="tagline">Quality. Precision. Delivered.</div>
+        </div>
+      </div>
+      <div class="header-contact">
+        <div class="phone">1-800-555-WELD</div>
+        <div>info@midwestmetalfab.com</div>
+        <div>Mon-Fri: 7:00 AM - 5:00 PM CST</div>
+      </div>
+    </div>
+  </header>
+
+  <nav>
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="index.html#services">Services</a></li>
+      <li><a href="index.html#equipment">Equipment</a></li>
+      <li><a href="index.html#industries">Industries</a></li>
+      <li><a href="about.html" class="active">About Us</a></li>
+      <li><a href="index.html#contact">Contact</a></li>
+      <li><a href="index.html#rfq">Request Quote</a></li>
+    </ul>
+  </nav>
+
+  <div class="page-title">
+    <h2>Meet Our Leadership Team</h2>
+    <p>The people behind 35+ years of fabrication excellence</p>
+  </div>
+
+  <main>
+
+    <div class="intro">
+      <img src="img/team.png" alt="The MMF Leadership Team" style="width: 100%; max-width: 800px; margin-bottom: 20px; border: 3px solid #2c5282;">
+      <h3>Family Values, Professional Results</h3>
+      <p>At MMF, we're more than a metal fabrication company — we're a team that's been built over three decades of hard work, dedication, and a commitment to doing things right. Our leadership team brings together decades of combined experience in manufacturing, operations, technology, and customer service.</p>
+    </div>
+
+    <div class="team-grid">
+
+      <!-- Jon - CEO (Featured) -->
+      <div class="team-member leadership">
+        <div class="team-member-header">
+          <img src="img/jon.jpg" alt="Jon - CEO/Owner" class="team-member-photo">
+          <div class="team-member-name">
+            <h3>Jon</h3>
+            <div class="title">CEO / Owner</div>
+          </div>
+        </div>
+        <div class="team-member-body">
+          <p class="team-member-bio">Jon took over the family business from his father 8 years ago and has been steering MMF through the evolving manufacturing landscape ever since. With a deep respect for the company's heritage and an eye toward the future, Jon balances the practical wisdom of experienced fabricators with new technologies and approaches. He's known for being cautiously optimistic — willing to invest in the right projects while never forgetting the lessons learned from past challenges.</p>
+          <div class="team-member-quote">When I accepted the torch from my father, I made a sacred vow to the MMF family. We are not merely fabricators — we are guardians of a legacy. Those who join us become part of something eternal. The steel we shape is temporary, but our bond is forever.</div>
+          <div class="team-member-years">With MMF: 22 years (8 as CEO)</div>
+        </div>
+      </div>
+
+      <!-- Anna - CMO -->
+      <div class="team-member">
+        <div class="team-member-header">
+          <img src="img/anna.jpg" alt="Anna - Chief Marketing Officer" class="team-member-photo">
+          <div class="team-member-name">
+            <h3>Anna</h3>
+            <div class="title">Chief Marketing Officer</div>
+          </div>
+        </div>
+        <div class="team-member-body">
+          <p class="team-member-bio">Anna joined MMF three years ago to modernize the company's market presence and customer communications. She's brought fresh perspective to a traditionally operations-focused business and is passionate about understanding the customer journey. Her small but scrappy marketing team punches above its weight, and she's always looking for ways to better connect marketing efforts to business results.</p>
+          <div class="team-member-quote">Before MMF, I wandered between companies searching for meaning. Here, I found my true calling. Every message we send carries the spirit of our collective. The brand is not what we say — it is what we ARE. Together, we speak as one voice.</div>
+          <div class="team-member-years">With MMF: 3 years</div>
+        </div>
+      </div>
+
+      <!-- Chris - IT Manager -->
+      <div class="team-member">
+        <div class="team-member-header">
+          <img src="img/chris.jpg" alt="Chris - IT Manager" class="team-member-photo">
+          <div class="team-member-name">
+            <h3>Chris</h3>
+            <div class="title">IT Manager</div>
+          </div>
+        </div>
+        <div class="team-member-body">
+          <p class="team-member-bio">Chris is the technical backbone of MMF, managing everything from the ERP system to shop floor tablets. He's genuinely excited about emerging technologies but realistic about the challenges of implementation — especially when data lives in multiple systems that don't talk to each other. He's been quietly experimenting with new tools and sees real potential for the company.</p>
+          <div class="team-member-quote">The systems I build are more than technology — they are the nervous system of our organism. When data flows freely, the collective thrives. I have seen what happens when the connection is broken. I will never let that happen to our family again.</div>
+          <div class="team-member-years">With MMF: 7 years</div>
+        </div>
+      </div>
+
+      <!-- Zubia - Controller -->
+      <div class="team-member">
+        <div class="team-member-header">
+          <img src="img/zubia.jpg" alt="Zubia - Controller" class="team-member-photo">
+          <div class="team-member-name">
+            <h3>Zubia</h3>
+            <div class="title">Controller</div>
+          </div>
+        </div>
+        <div class="team-member-body">
+          <p class="team-member-bio">Zubia keeps the financial engine running and ensures every investment delivers measurable returns. With a sharp eye for data and a healthy skepticism of promises without proof, she's the voice of fiscal responsibility on the leadership team. She's also sitting on more useful data than most people realize — if you need numbers, Zubia has them.</p>
+          <div class="team-member-quote">Numbers do not lie, and neither do I. Every dollar that flows through MMF is a drop of lifeblood in our shared vessel. I protect our resources because I protect our future. Those who understand the numbers understand the path forward.</div>
+          <div class="team-member-years">With MMF: 9 years</div>
+        </div>
+      </div>
+
+      <!-- Mike - Operations Manager -->
+      <div class="team-member">
+        <div class="team-member-header">
+          <img src="img/mike.jpg" alt="Mike - Operations Manager" class="team-member-photo">
+          <div class="team-member-name">
+            <h3>Mike</h3>
+            <div class="title">Operations Manager</div>
+          </div>
+        </div>
+        <div class="team-member-body">
+          <p class="team-member-bio">Mike runs the shop floor and knows where every job is at any given moment — because people ask him constantly. A pragmatist who's seen technology initiatives come and go, Mike focuses on what works and isn't afraid to voice concerns when he sees problems ahead. His team respects him because he's been in their shoes and still gets his hands dirty when needed.</p>
+          <div class="team-member-quote">The floor is where truth is forged. Out here, we are one body moving as one mind. When a new member joins, they feel it — this is different. This is real. I have given 18 years to the floor, and the floor has given me purpose.</div>
+          <div class="team-member-years">With MMF: 18 years</div>
+        </div>
+      </div>
+
+      <!-- Vinny - VP Sales -->
+      <div class="team-member">
+        <div class="team-member-header">
+          <img src="img/vinny.jpg" alt="Vinny - VP Sales" class="team-member-photo">
+          <div class="team-member-name">
+            <h3>Vinny</h3>
+            <div class="title">VP of Sales</div>
+          </div>
+        </div>
+        <div class="team-member-body">
+          <p class="team-member-bio">Vinny leads the sales team with infectious energy and a genuine passion for solving customer problems. He's the first one in the office and often the last one out, juggling quote requests, customer calls, and new business development. Always looking for ways to move faster and win more deals, Vinny embraces new tools and isn't afraid to experiment.</p>
+          <div class="team-member-quote">Every customer who chooses MMF becomes part of something greater than a transaction. I do not sell metal — I invite people into our circle. When they feel what we feel, the deal closes itself. That energy cannot be faked. It must be lived.</div>
+          <div class="team-member-years">With MMF: 11 years</div>
+        </div>
+      </div>
+
+      <!-- Colin - Senior Estimator -->
+      <div class="team-member">
+        <div class="team-member-header">
+          <img src="img/colin.jpg" alt="Colin - Senior Estimator" class="team-member-photo">
+          <div class="team-member-name">
+            <h3>Colin</h3>
+            <div class="title">Senior Estimator</div>
+          </div>
+        </div>
+        <div class="team-member-body">
+          <p class="team-member-bio">Colin has been estimating jobs at MMF for over two decades, developing an almost intuitive sense for what a job will cost and how long it will take. His knowledge of materials, processes, and customer requirements is invaluable — the kind of expertise that takes years to develop and is impossible to replace. He's the person everyone turns to when a quote doesn't look right.</p>
+          <div class="team-member-quote">The knowledge lives in me now. Twenty-four years of every weld, every bend, every cut — it speaks through me. When I retire, part of me will remain here. The others will carry my wisdom forward. This is how the circle continues unbroken.</div>
+          <div class="team-member-years">With MMF: 24 years</div>
+        </div>
+      </div>
+
+    </div>
+
+  </main>
+
+  <footer>
+    <p>&copy; 2024 Midwest Metal Fabricators, Inc. All Rights Reserved.</p>
+    <p style="margin-top: 5px;">
+      <a href="#">Privacy Policy</a> |
+      <a href="#">Terms of Service</a> |
+      <a href="#">Careers</a>
+    </p>
+    <p class="last-updated">Website designed by Tom's nephew Kevin &bull; Last updated: March 2024</p>
+  </footer>
+
+</body>
+</html>
